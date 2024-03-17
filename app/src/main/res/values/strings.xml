@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">FoodTracker</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="imt_hello">Здесь можно узнать индекс массы тела</string>
+    <string name="imt_height">Рост</string>
+    <string name="imt_weight">Вес</string>
+    <string name="imt_calc">Посчитать ИМТ</string>
+    <string name="sm">см</string>
+    <string name="kg">кг</string>
 </resources>

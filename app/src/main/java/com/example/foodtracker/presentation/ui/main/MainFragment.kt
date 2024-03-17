@@ -12,6 +12,12 @@ import com.example.foodtracker.R
 
 class MainMenuFragment : Fragment() {
 
+    companion object {
+        @JvmStatic
+        fun newInstance() = MainMenuFragment()
+    }
+    
+
     val viewModel: MainViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
