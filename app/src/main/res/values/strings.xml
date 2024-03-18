@@ -7,4 +7,12 @@
     <string name="imt_calc">Посчитать ИМТ</string>
     <string name="sm">см</string>
     <string name="kg">кг</string>
+    <string name="severe_body_weight_deficiency">Выраженный дифицит массы тела</string>
+    <string name="insufficient_body_weight">Недостаточная (дефицит) масса тела</string>
+    <string name="standard">Норма, поздравляем</string>
+    <string name="overweight">Избыточная масса тела (предожирение)</string>
+    <string name="first_degree_obesity">Ожирение первой степени</string>
+    <string name="second_degree_obesity">Ожирение второй степени</string>
+    <string name="third_degree_obesity">Ожирение третьей степени</string>
+    <string name="unknown_verdict">Проверьте корректность введенных данных</string>
 </resources>

@@ -3,8 +3,7 @@ package com.example.foodtracker.presentation
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.foodtracker.R
-import com.example.foodtracker.presentation.ui.imtstat.ImtStat
-import com.example.foodtracker.presentation.ui.main.MainMenuFragment
+import com.example.foodtracker.presentation.ui.imtstat.ImtStatFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager
             .beginTransaction()
-            .add(R.id.container, ImtStat.newInstance())
+            .add(R.id.container, ImtStatFragment.newInstance())
             .commit()
 
     }
