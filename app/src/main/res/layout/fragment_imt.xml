@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/imt_hello"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/imt_hello"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/imt_height"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/imt_height"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/imt_edit_height"
+        app:layout_constraintEnd_toStartOf="@id/imt_edit_height"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imt_hello" />
+
+    <EditText
+        android:id="@+id/imt_edit_height"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="170dp"
+        android:autofillHints="@string/imt_height"
+        android:hint="@string/sm"
+
+        android:inputType="numberDecimal"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/imt_weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imt_height"
+        app:layout_constraintTop_toBottomOf="@id/imt_hello" />
+
+    <TextView
+        android:id="@+id/imt_weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="@string/imt_weight"
+        android:textSize="25sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/imt_edit_weight"
+        app:layout_constraintEnd_toStartOf="@+id/imt_edit_weight"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imt_height" />
+
+    <EditText
+        android:id="@+id/imt_edit_weight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:autofillHints="@string/imt_weight"
+        android:hint="@string/kg"
+        android:inputType="numberDecimal"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imt_weight"
+        app:layout_constraintTop_toBottomOf="@+id/imt_edit_height" />
+
+    <Button
+        android:id="@+id/calculate"
+        style="@style/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#0000FF"
+
+        android:text="@string/imt_calc"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imt_edit_weight"
+        app:layout_constraintVertical_bias="0.608" />
+
+    <View
+        android:id="@+id/view"
+        android:background="@color/purple_500"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="-1dp"
+        app:layout_constraintStart_toEndOf="@+id/imt_height"
+        app:layout_constraintTop_toBottomOf="@+id/imt_hello" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

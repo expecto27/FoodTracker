@@ -8,17 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.R
 
-//import com.example.foodtracker.presentation.R
-
 class MainMenuFragment : Fragment() {
 
     companion object {
         @JvmStatic
         fun newInstance() = MainMenuFragment()
     }
-    
 
     val viewModel: MainViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,4 +24,5 @@ class MainMenuFragment : Fragment() {
     ): View? {
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
+
 }
