@@ -8,11 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.R
 
-class MainMenuFragment : Fragment() {
+class MainFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = MainMenuFragment()
+        fun newInstance() = MainFragment()
     }
 
     val viewModel: MainViewModel by viewModels()
