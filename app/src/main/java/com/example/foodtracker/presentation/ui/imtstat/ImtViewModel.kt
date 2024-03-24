@@ -9,13 +9,21 @@ import com.example.foodtracker.domain.models.IndexIMT
 import com.example.foodtracker.domain.models.Weight
 import com.example.foodtracker.domain.usecase.CalculateIMT
 import com.example.foodtracker.domain.usecase.GetImtVerdict
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ImtViewModel : ViewModel() {
+@HiltViewModel
+class ImtViewModel @Inject constructor(
+    var calculateIMT: CalculateIMT,
+    var getImtVerdict: GetImtVerdict
+) : ViewModel() {
+
+
     fun getSnackBarVerdict(context: Context, weight: Double, height: Double): String {
 
-        val imt: IndexIMT = CalculateIMT.execute(Weight(weight), Height(height))
+        val imt: IndexIMT = calculateIMT.execute(Weight(weight), Height(height))
 
-        val resId: Int = when (GetImtVerdict.execute(imt)) {
+        val resId: Int = when (getImtVerdict.execute(imt)) {
             ImtVerdict.SevereBodyWeightDeficiency -> R.string.severe_body_weight_deficiency
             ImtVerdict.InsufficientBodyWeight -> R.string.insufficient_body_weight
             ImtVerdict.Standard -> R.string.standard

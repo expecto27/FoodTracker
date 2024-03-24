@@ -20,4 +20,5 @@
     <string name="dinner">Ужин</string>
     <string name="addition">Добавить приём пищи</string>
     <string name="top_view_discriprion">topView</string>
+    <string name="fast_food">Перекус</string>
 </resources>
