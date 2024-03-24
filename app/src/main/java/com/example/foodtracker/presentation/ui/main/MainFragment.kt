@@ -23,29 +23,34 @@ class MainFragment : Fragment() {
     val viewModel: MainViewModel by viewModels()
     private val _adapter = EatingCardAdapter()
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         binding.rvMain.apply {
             adapter = _adapter
             layoutManager = LinearLayoutManager(this@MainFragment.context)
         }
         _adapter.addCard(
             EatingCard(
-            R.drawable.breakfast,
-            R.color.purple_200,
-            "Завтрак"
+                R.drawable.breakfast,
+                R.color.purple_200,
+                getString(R.string.breakfast)
             )
         )
-        _adapter.addCard(EatingCard(
-            R.drawable.lunchmain,
-            R.color.purple_500,
-            "Обед"
-        ))
-        _adapter.addCard(EatingCard(
-            R.drawable.lunch,
-            R.color.purple_700,
-            "Ужин"
-        ))
+        _adapter.addCard(
+            EatingCard(
+                R.drawable.lunchmain,
+                R.color.purple_500,
+                getString(R.string.lunch)
+            )
+        )
+        _adapter.addCard(
+            EatingCard(
+                R.drawable.lunch,
+                R.color.purple_700,
+                getString(R.string.dinner)
+            )
+        )
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -54,7 +59,6 @@ class MainFragment : Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
         initRecyclerView()
-
 
         return binding.root
     }

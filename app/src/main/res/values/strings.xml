@@ -15,4 +15,9 @@
     <string name="second_degree_obesity">Ожирение второй степени</string>
     <string name="third_degree_obesity">Ожирение третьей степени</string>
     <string name="unknown_verdict">Проверьте корректность введенных данных</string>
+    <string name="breakfast">Завтрак</string>
+    <string name="lunch">Обед</string>
+    <string name="dinner">Ужин</string>
+    <string name="addition">Добавить приём пищи</string>
+    <string name="top_view_discriprion">topView</string>
 </resources>
