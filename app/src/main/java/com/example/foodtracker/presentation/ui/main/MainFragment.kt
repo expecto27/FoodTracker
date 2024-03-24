@@ -27,11 +27,25 @@ class MainFragment : Fragment() {
         binding.rvMain.apply {
             adapter = _adapter
             layoutManager = LinearLayoutManager(this@MainFragment.context)
-
-
         }
+        _adapter.addCard(
+            EatingCard(
+            R.drawable.breakfast,
+            R.color.purple_200,
+            "Завтрак"
+            )
+        )
+        _adapter.addCard(EatingCard(
+            R.drawable.lunchmain,
+            R.color.purple_500,
+            "Обед"
+        ))
+        _adapter.addCard(EatingCard(
+            R.drawable.lunch,
+            R.color.purple_700,
+            "Ужин"
+        ))
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,15 +54,7 @@ class MainFragment : Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
         initRecyclerView()
-        for(i in 1..10){
-            _adapter.addCard(
-                EatingCard(
-                    imageId = R.drawable.example,
-                    color = R.color.purple_700,
-                    "hello"
-                )
-            )
-        }
+
 
         return binding.root
     }
