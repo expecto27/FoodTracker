@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.FragmentMainBinding
 import com.example.foodtracker.presentation.ui.adapters.EatingCardAdapter
+import com.example.foodtracker.presentation.ui.models.AdditionCard
 import com.example.foodtracker.presentation.ui.models.EatingCard
 
 class MainFragment : Fragment() {
@@ -28,6 +29,9 @@ class MainFragment : Fragment() {
             adapter = _adapter
             layoutManager = LinearLayoutManager(this@MainFragment.context)
         }
+
+
+
         _adapter.addCard(
             EatingCard(
                 R.drawable.breakfast,
@@ -49,7 +53,26 @@ class MainFragment : Fragment() {
                 getString(R.string.dinner)
             )
         )
+        val listener = {
+            _adapter.addCustomCard(
+                EatingCard(
+                    R.drawable.fast_food,
+                    R.color.black,
+                    getString(R.string.fast_food)
+                )
+            )
+        }
+
+        _adapter.addCard(
+            AdditionCard(
+                R.drawable.plus,
+                R.color.green,
+                "Добавить",
+                listener
+            )
+        )
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,

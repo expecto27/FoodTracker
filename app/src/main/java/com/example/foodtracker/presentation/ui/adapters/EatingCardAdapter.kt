@@ -6,19 +6,27 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.EatingCardBinding
+import com.example.foodtracker.presentation.ui.models.AdditionCard
+import com.example.foodtracker.presentation.ui.models.ICard
 import com.example.foodtracker.presentation.ui.models.EatingCard
 
 class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
 
-    private val cardList = ArrayList<EatingCard>()
+    private val cardList = ArrayList<ICard>()
 
     class CardHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = EatingCardBinding.bind(item)
-
-        fun bind(card: EatingCard) = with(binding) {
-            title.text = card.title
-            cardImage.setImageResource(card.imageId)
-            cardView.setCardBackgroundColor(card.color)
+        fun bind(card: ICard) {
+            with(binding) {
+                title.text = card.title
+                cardImage.setImageResource(card.imageId)
+                cardView.setCardBackgroundColor(card.color)
+            }
+            if(card is AdditionCard){
+                binding.cardView.setOnClickListener {
+                    card.listener.invoke()
+                }
+            }
         }
     }
 
@@ -35,8 +43,15 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
         holder.bind(cardList[position])
     }
 
-    fun addCard(card: EatingCard){
+    fun addCard(card: ICard){
         cardList.add(card)
+        notifyDataSetChanged()
+    }
+    fun addCustomCard(card: ICard){
+        cardList.add(card)
+        val temp = cardList[itemCount-1]
+        cardList[itemCount - 1] = cardList[itemCount - 2]
+        cardList[itemCount - 2] = temp
         notifyDataSetChanged()
     }
 }

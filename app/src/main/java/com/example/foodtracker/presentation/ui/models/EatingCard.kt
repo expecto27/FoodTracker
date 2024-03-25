@@ -1,7 +1,7 @@
 package com.example.foodtracker.presentation.ui.models
 
 data class EatingCard(
-    val imageId: Int,
-    val color: Int,
-    val title: String
-)
+    override val imageId: Int,
+    override val color: Int,
+    override val title: String
+):ICard
