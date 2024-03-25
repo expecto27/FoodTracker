@@ -14,8 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ImtViewModel @Inject constructor(
-    var calculateIMT: CalculateIMT,
-    var getImtVerdict: GetImtVerdict
+    private var calculateIMT: CalculateIMT,
+    private var getImtVerdict: GetImtVerdict
 ) : ViewModel() {
 
 
