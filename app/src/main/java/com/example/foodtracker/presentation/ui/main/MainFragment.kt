@@ -68,7 +68,8 @@ class MainFragment : Fragment() {
                 R.drawable.plus,
                 R.color.green,
                 "Добавить",
-                listener
+                listener,
+                false
             )
         )
     }
@@ -82,15 +83,6 @@ class MainFragment : Fragment() {
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
         initRecyclerView()
-        binding.addition.setOnClickListener {
-            _adapter.addCard(
-                EatingCard(
-                    R.drawable.fast_food,
-                    R.color.black,
-                    getString(R.string.fast_food)
-                )
-            )
-        }
 
         return binding.root
     }

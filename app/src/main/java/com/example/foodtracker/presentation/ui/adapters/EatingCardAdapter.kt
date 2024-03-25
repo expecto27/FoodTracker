@@ -16,6 +16,7 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
 
     class CardHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = EatingCardBinding.bind(item)
+
         fun bind(card: ICard) {
             with(binding) {
                 title.text = card.title
@@ -25,6 +26,9 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
             if(card is AdditionCard){
                 binding.cardView.setOnClickListener {
                     card.listener.invoke()
+                }
+            } else{
+                binding.cardView.setOnClickListener {
                 }
             }
         }
@@ -48,10 +52,9 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
         notifyDataSetChanged()
     }
     fun addCustomCard(card: ICard){
-        cardList.add(card)
         val temp = cardList[itemCount-1]
-        cardList[itemCount - 1] = cardList[itemCount - 2]
-        cardList[itemCount - 2] = temp
+        cardList[itemCount - 1] = card
+        cardList.add(temp)
         notifyDataSetChanged()
     }
 }
