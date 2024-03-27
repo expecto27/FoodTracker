@@ -28,8 +28,7 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
                     card.listener.invoke()
                 }
             } else{
-                binding.cardView.setOnClickListener {
-                }
+                binding.cardView.setOnClickListener {}
             }
         }
     }

@@ -6,6 +6,5 @@ data class AdditionCard (
     override val imageId: Int,
     override val color: Int,
     override val title: String,
-    val listener: () -> Unit,
-    var isBind: Boolean
+    val listener: () -> Unit
 ) : ICard

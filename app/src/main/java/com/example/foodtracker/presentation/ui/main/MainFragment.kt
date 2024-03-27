@@ -67,12 +67,12 @@ class MainFragment : Fragment() {
             AdditionCard(
                 R.drawable.plus,
                 R.color.green,
-                "Добавить",
-                listener,
-                false
+                getString(R.string.add),
+                listener
             )
         )
     }
+
 
 
     override fun onCreateView(
@@ -82,9 +82,15 @@ class MainFragment : Fragment() {
     ): View {
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        initRecyclerView()
 
         return binding.root
+    }
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+            initRecyclerView()
     }
 
 }
