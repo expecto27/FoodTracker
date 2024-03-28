@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.ActivityMainBinding
 import com.example.foodtracker.presentation.ui.main.MainFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

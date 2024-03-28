@@ -6,16 +6,19 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
 @InstallIn(ViewModelComponent::class)
 class DomainModule{
     @Provides
-    fun provideCalculateIMT(): CalculateIMT{
+    @ViewModelScoped
+    fun provideCalculateIMT(): CalculateIMT {
         return CalculateIMT()
     }
 
     @Provides
+    @ViewModelScoped
     fun provideGetImtVerdict(): GetImtVerdict{
         return GetImtVerdict()
     }

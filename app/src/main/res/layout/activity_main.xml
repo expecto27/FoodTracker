@@ -9,7 +9,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFragment"
-        android:name="com.example.foodtracker.presentation.ui.main.MainFragment"
+        android:name="com.example.foodtracker.presentation.ui.imtstat.ImtStatFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
