@@ -22,4 +22,6 @@
     <string name="top_view_discriprion">topView</string>
     <string name="fast_food">Перекус</string>
     <string name="add">Добавить</string>
+    <string name="home">Главная</string>
+    <string name="stat">Статистика</string>
 </resources>

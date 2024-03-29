@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                         MainFragment.newInstance()
                     )
                     currentFragment = MainFragment.newInstance()
-                    false
+                    true // select light
                 }
                 R.id.imtFragment -> {
                     navManager.replace(
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                         ImtStatFragment.newInstance()
                     )
                     currentFragment = ImtStatFragment.newInstance()
-                    false
+                    true
                 }
                 else -> {
                     navManager.delete(currentFragment)
