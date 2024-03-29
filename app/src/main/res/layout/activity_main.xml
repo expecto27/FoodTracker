@@ -21,6 +21,11 @@
 
     </androidx.fragment.app.FragmentContainerView>
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="R.id."
+        app:layout_constraintBottom_toBottomOf="@+id/mainFragment" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
