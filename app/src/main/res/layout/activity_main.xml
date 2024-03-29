@@ -9,10 +9,10 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/mainFragment"
-        android:name="com.example.foodtracker.presentation.ui.imtstat.ImtStatFragment"
+        android:name="com.example.foodtracker.presentation.ui.main.MainFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,10 +22,12 @@
     </androidx.fragment.app.FragmentContainerView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="R.id."
-        app:layout_constraintBottom_toBottomOf="@+id/mainFragment" />
+        app:menu="@menu/bottom_nav_menu"
+        app:layout_constraintTop_toBottomOf="@id/mainFragment"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
