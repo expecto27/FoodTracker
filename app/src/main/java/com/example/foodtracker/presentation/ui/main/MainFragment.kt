@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.FragmentMainBinding
+import com.example.foodtracker.presentation.FragmentChanger
 import com.example.foodtracker.presentation.ui.adapters.EatingCardAdapter
+import com.example.foodtracker.presentation.ui.foodselect.FoodSelectFragment
 import com.example.foodtracker.presentation.ui.models.AdditionCard
 import com.example.foodtracker.presentation.ui.models.EatingCard
 
@@ -30,27 +32,31 @@ class MainFragment : Fragment() {
             layoutManager = LinearLayoutManager(this@MainFragment.context)
         }
 
-
-
+        val changeListener = {
+            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
+        }
         _adapter.addCard(
             EatingCard(
                 R.drawable.breakfast,
                 R.color.purple_200,
-                getString(R.string.breakfast)
+                getString(R.string.breakfast),
+                changeListener
             )
         )
         _adapter.addCard(
             EatingCard(
                 R.drawable.lunchmain,
                 R.color.purple_500,
-                getString(R.string.lunch)
+                getString(R.string.lunch) ,
+                changeListener
             )
         )
         _adapter.addCard(
             EatingCard(
                 R.drawable.lunch,
                 R.color.purple_700,
-                getString(R.string.dinner)
+                getString(R.string.dinner),
+                changeListener
             )
         )
         val listener = {
@@ -58,7 +64,8 @@ class MainFragment : Fragment() {
                 EatingCard(
                     R.drawable.fast_food,
                     R.color.black,
-                    getString(R.string.fast_food)
+                    getString(R.string.fast_food),
+                    changeListener
                 )
             )
         }
@@ -82,7 +89,6 @@ class MainFragment : Fragment() {
     ): View {
 
         binding = FragmentMainBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 

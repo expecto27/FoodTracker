@@ -12,9 +12,12 @@ import com.example.foodtracker.presentation.ui.navigation.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), FragmentChanger {
 
     private lateinit var binding: ActivityMainBinding
+    private val navManager : INavigationManager = NavigationManager(supportFragmentManager)
+    private var currentFragment: Fragment = MainFragment.newInstance()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -22,8 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var currentFragment: Fragment = MainFragment.newInstance()
-        val navManager : INavigationManager = NavigationManager(supportFragmentManager)
 
         binding.bottomNav.setOnItemSelectedListener {item ->
 
@@ -51,4 +52,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun changeMainFragment(fragment: Fragment){
+        navManager.replace(
+            binding.mainFragment.id,
+            fragment
+        )
+    }
+
 }
