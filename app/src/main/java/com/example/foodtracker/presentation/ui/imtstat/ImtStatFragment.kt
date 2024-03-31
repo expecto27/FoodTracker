@@ -35,33 +35,9 @@ class ImtStatFragment : Fragment() {
             val text = viewModel.getSnackBarVerdict(requireContext(), weight, height)
             Snackbar.make(binding.root, text, Snackbar.LENGTH_LONG).show()
         }
-        val ex : String = """
-            ogorjeg
-            egpergore
-            ergergprgk
-        """.trimIndent()
-
-        var a = if(ex.equals("4")){
-            4
-        }else{
-            5
-        }
-
-        a = when(ex){
-            "4" -> 4
-            else -> 5
-        }
-
-        example{
-            5 * 5
-        }
-
         return binding.root
     }
 
-    fun example(l: (Int) -> Int){
-        l;
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }

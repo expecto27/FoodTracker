@@ -24,4 +24,6 @@
     <string name="add">Добавить</string>
     <string name="home">Главная</string>
     <string name="stat">Статистика</string>
+    <string name="food_search">Поиск еды</string>
+    <string name="cancel">Отмена</string>
 </resources>

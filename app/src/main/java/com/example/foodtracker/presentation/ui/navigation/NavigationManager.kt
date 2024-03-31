@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.replace
 
 class NavigationManager(var fragmentManager: FragmentManager) : INavigationManager{
 
@@ -11,6 +12,14 @@ class NavigationManager(var fragmentManager: FragmentManager) : INavigationManag
         fragmentManager
             .beginTransaction()
             .add(container, fragment)
+            .commit()
+    }
+
+    override fun replaceToBackStack(container: Int, fragment: Fragment) {
+        fragmentManager
+            .beginTransaction()
+            .replace(container, fragment)
+            .addToBackStack(null)
             .commit()
     }
 

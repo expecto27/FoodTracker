@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(), FragmentChanger {
     }
 
     override fun changeMainFragment(fragment: Fragment){
-        navManager.replace(
+        navManager.replaceToBackStack(
             binding.mainFragment.id,
             fragment
         )

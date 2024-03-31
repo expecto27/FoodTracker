@@ -16,14 +16,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/top_view_main_fragment" />
 
-    <Button
-        android:id="@+id/addition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/addition"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/top_view" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_main"
         android:layout_width="match_parent"
@@ -33,6 +25,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addition" />
+        app:layout_constraintTop_toBottomOf="@+id/top_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
