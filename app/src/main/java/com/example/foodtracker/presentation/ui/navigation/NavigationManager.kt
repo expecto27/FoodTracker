@@ -1,10 +1,7 @@
 package com.example.foodtracker.presentation.ui.navigation
 
-import android.content.Context
-import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.replace
 
 class NavigationManager(var fragmentManager: FragmentManager) : INavigationManager{
 
@@ -23,6 +20,9 @@ class NavigationManager(var fragmentManager: FragmentManager) : INavigationManag
             .commit()
     }
 
+    override fun backInBackStack() {
+        fragmentManager.popBackStack()
+    }
 
     override fun replace(container: Int, fragment: Fragment) {
         fragmentManager

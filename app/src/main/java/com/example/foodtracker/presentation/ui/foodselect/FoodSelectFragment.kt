@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.databinding.FragmentFoodSelectBinding
+import com.example.foodtracker.presentation.FragmentChanger
 
 class FoodSelectFragment : Fragment() {
 
@@ -24,18 +25,21 @@ class FoodSelectFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFoodSelectBinding.inflate(inflater, container, false)
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         viewModel.searchData.observe(viewLifecycleOwner) { newData ->
             binding.foodSearch.text = Editable
                 .Factory
                 .getInstance()
                 .newEditable(newData)
         }
+
+        binding.cancel.setOnClickListener {
+            (activity as FragmentChanger).backInBackStack()
+        }
+
+        return binding.root
     }
+
 
     override fun onDestroy() {
         viewModel.setLivaDataText(binding.foodSearch.text.toString())

@@ -53,6 +53,10 @@ class MainActivity : AppCompatActivity(), FragmentChanger {
         }
     }
 
+    override fun backInBackStack() {
+        navManager.backInBackStack()
+    }
+
     override fun changeMainFragment(fragment: Fragment){
         navManager.replaceToBackStack(
             binding.mainFragment.id,

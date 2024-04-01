@@ -24,43 +24,14 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     val viewModel: MainViewModel by viewModels()
-    private val _adapter = EatingCardAdapter()
 
-    private fun initRecyclerView() {
-        binding.rvMain.apply {
-            adapter = _adapter
-            layoutManager = LinearLayoutManager(this@MainFragment.context)
-        }
-
+    private fun EatingCardAdapter.initItems(){
         val changeListener = {
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
-        _adapter.addCard(
-            EatingCard(
-                R.drawable.breakfast,
-                R.color.purple_200,
-                getString(R.string.breakfast),
-                changeListener
-            )
-        )
-        _adapter.addCard(
-            EatingCard(
-                R.drawable.lunchmain,
-                R.color.purple_500,
-                getString(R.string.lunch) ,
-                changeListener
-            )
-        )
-        _adapter.addCard(
-            EatingCard(
-                R.drawable.lunch,
-                R.color.purple_700,
-                getString(R.string.dinner),
-                changeListener
-            )
-        )
-        val listener = {
-            _adapter.addCustomCard(
+
+        val addListener = {
+            this.addCustomCard(
                 EatingCard(
                     R.drawable.fast_food,
                     R.color.black,
@@ -69,15 +40,51 @@ class MainFragment : Fragment() {
                 )
             )
         }
+        this.addCard(
+            EatingCard(
+                R.drawable.breakfast,
+                R.color.purple_200,
+                getString(R.string.breakfast),
+                changeListener
+            )
+        )
+        this.addCard(
+            EatingCard(
+                R.drawable.lunchmain,
+                R.color.purple_500,
+                getString(R.string.lunch) ,
+                changeListener
+            )
+        )
+        this.addCard(
+            EatingCard(
+                R.drawable.lunch,
+                R.color.purple_700,
+                getString(R.string.dinner),
+                changeListener
+            )
+        )
 
-        _adapter.addCard(
+        this.addCard(
             AdditionCard(
                 R.drawable.plus,
                 R.color.green,
                 getString(R.string.add),
-                listener
+                addListener
             )
         )
+    }
+    private fun initRecyclerView() {
+
+        val _adapter = EatingCardAdapter()
+
+        binding.rvMain.apply {
+            adapter = _adapter
+            layoutManager = LinearLayoutManager(this@MainFragment.context)
+        }
+        if(_adapter.itemCount == 0){
+            _adapter.initItems()
+        }
     }
 
 

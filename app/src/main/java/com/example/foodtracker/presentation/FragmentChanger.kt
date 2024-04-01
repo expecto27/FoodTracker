@@ -4,4 +4,5 @@ import androidx.fragment.app.Fragment
 
 interface FragmentChanger {
     fun changeMainFragment(fragment: Fragment)
+    fun backInBackStack()
 }
