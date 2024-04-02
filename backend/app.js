@@ -8,3 +8,5 @@ var db = require('./app/config/db.config.js');
 db.sequelize.sync({force: false});
 
 app.listen(3000);
+var food = require('./app/route/food');
+food(app);

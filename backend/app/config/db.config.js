@@ -42,17 +42,5 @@ var db = init_models.initModels(sequelize);
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.food.create({
-    title : 'title',
-    calories: 250,
-    protein: 8
-})
-.then(newReport => {
-    console.log('create', newReport);
-})
-.catch(erroe => {
-    console.error('error', error);
-});
-
 module.exports = db;
 //
