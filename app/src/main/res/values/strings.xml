@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">FoodTracker</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="imt_hello">Здесь можно узнать индекс массы тела</string>
+    <string name="imt_height">Рост</string>
+    <string name="imt_weight">Вес</string>
+    <string name="imt_calc">Посчитать ИМТ</string>
+    <string name="sm">см</string>
+    <string name="kg">кг</string>
+    <string name="severe_body_weight_deficiency">Выраженный дифицит массы тела</string>
+    <string name="insufficient_body_weight"> Дефицит массы тела</string>
+    <string name="standard">Норма, поздравляем</string>
+    <string name="overweight">Избыточная масса тела (предожирение)</string>
+    <string name="first_degree_obesity">Ожирение первой степени</string>
+    <string name="second_degree_obesity">Ожирение второй степени</string>
+    <string name="third_degree_obesity">Ожирение третьей степени</string>
+    <string name="unknown_verdict">Проверьте корректность введенных данных</string>
+    <string name="breakfast">Завтрак</string>
+    <string name="lunch">Обед</string>
+    <string name="dinner">Ужин</string>
+    <string name="addition">Добавить приём пищи</string>
+    <string name="top_view_discriprion">topView</string>
+    <string name="fast_food">Перекус</string>
+    <string name="add">Добавить</string>
+    <string name="home">Главная</string>
+    <string name="stat">Статистика</string>
+    <string name="food_search">Поиск еды</string>
+    <string name="cancel">Отмена</string>
+    <string name="add_foot">Добавить свою еду</string>
+</resources>
