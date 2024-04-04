@@ -27,4 +27,11 @@
     <string name="food_search">Поиск еды</string>
     <string name="cancel">Отмена</string>
     <string name="add_foot">Добавить свою еду</string>
+    <string name="add_your_product">Добавьте свой продукт</string>
+    <string name="title_product">Название</string>
+    <string name="carbohydrates">Углеводы</string>
+    <string name="fats">Жиры</string>
+    <string name="protein">Белки</string>
+    <string name="energy">Калорийность</string>
+    <string name="per_gramm">/100g</string>
 </resources>

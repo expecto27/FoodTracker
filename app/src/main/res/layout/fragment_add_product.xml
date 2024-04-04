@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.ui.addproduct.AddProductFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/cardview_dark_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+
+                android:id="@+id/title_product"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:hint="@string/title_product"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="kkal"
+                app:layout_constraintBaseline_toBaselineOf="@id/calories"
+                app:layout_constraintStart_toEndOf="@+id/calories" />
+
+
+            <EditText
+                android:id="@+id/calories"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/energy"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/title_product" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/100g"
+                app:layout_constraintBaseline_toBaselineOf="@id/protein"
+                app:layout_constraintStart_toEndOf="@+id/protein" />
+
+            <EditText
+                android:id="@+id/protein"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/protein"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/calories" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/100g"
+                app:layout_constraintBaseline_toBaselineOf="@id/fat"
+                app:layout_constraintStart_toEndOf="@+id/fat" />
+
+            <EditText
+                android:id="@+id/fat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/fats"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/protein" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/per_gramm"
+                app:layout_constraintBaseline_toBaselineOf="@id/carbohydrates"
+                app:layout_constraintStart_toEndOf="@+id/carbohydrates" />
+
+            <EditText
+                android:id="@+id/carbohydrates"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/carbohydrates"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fat" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Добавить"
+        app:layout_constraintEnd_toEndOf="@+id/card"
+        app:layout_constraintStart_toStartOf="@+id/card"
+        app:layout_constraintTop_toBottomOf="@+id/card" />
+
+    <Button
+        android:id="@+id/cancel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toEndOf="@+id/card"
+        app:layout_constraintStart_toStartOf="@+id/card"
+        app:layout_constraintTop_toBottomOf="@+id/add" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

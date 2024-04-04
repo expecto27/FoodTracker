@@ -9,7 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.databinding.FragmentFoodSelectBinding
 import com.example.foodtracker.presentation.FragmentChanger
+import com.example.foodtracker.presentation.ui.addproduct.AddProductFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FoodSelectFragment : Fragment() {
 
     companion object {
@@ -36,7 +39,10 @@ class FoodSelectFragment : Fragment() {
         binding.cancel.setOnClickListener {
             (activity as FragmentChanger).backInBackStack()
         }
-
+        binding.addFood.setOnClickListener {
+            (activity as FragmentChanger).changeMainFragment(AddProductFragment.newInstance())
+        }
+        viewModel.loadMyFood()
         return binding.root
     }
 

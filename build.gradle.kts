@@ -5,3 +5,12 @@ plugins {
     id("com.google.dagger.hilt.android") version "2.51" apply false
     id("com.google.devtools.ksp") version "1.9.23-1.0.19" apply false
 }
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23")
+    }
+}

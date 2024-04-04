@@ -7,11 +7,13 @@ import com.example.foodtracker.data.models.Product
 
 @Dao
 interface ProductDao {
-    @Query("SELECT * FROM product")
+
+    @Query("SELECT * FROM products")
     fun getAll() : List<Product>
 
-    @Query("SELECT * FROM product WHERE name Like :name")
-    fun findByName(name: String) : Product
+    @Query("SELECT * FROM products WHERE name Like :name")
+    fun findByName(name: String) : List<Product>
+
     @Insert
     fun save(product: Product)
 }
