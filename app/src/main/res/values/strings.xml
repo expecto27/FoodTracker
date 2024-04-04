@@ -26,4 +26,5 @@
     <string name="stat">Статистика</string>
     <string name="food_search">Поиск еды</string>
     <string name="cancel">Отмена</string>
+    <string name="add_foot">Добавить свою еду</string>
 </resources>
