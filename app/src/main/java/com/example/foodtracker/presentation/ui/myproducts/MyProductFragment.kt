@@ -11,7 +11,9 @@ import com.example.foodtracker.databinding.FragmentAddProductBinding
 import com.example.foodtracker.databinding.FragmentMyProductBinding
 import com.example.foodtracker.databinding.MyProdCardBinding
 import com.example.foodtracker.presentation.ui.adapters.MyProductAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyProductFragment : Fragment() {
 
     companion object {
@@ -26,6 +28,7 @@ class MyProductFragment : Fragment() {
             adapter = _adapter
             layoutManager = LinearLayoutManager(this@MyProductFragment.context)
         }
+        viewModel.initAdapterList(_adapter)
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

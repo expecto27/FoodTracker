@@ -36,4 +36,5 @@
     <string name="per_gramm">/100g</string>
     <string name="kсal">kсal</string>
     <string name="delete">Удалить</string>
+    <string name="prod">Продукты</string>
 </resources>
