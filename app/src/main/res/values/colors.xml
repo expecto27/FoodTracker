@@ -9,4 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
+
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="_bg__android_large___1_ek2_color">#FFFFFF</color>
+    <color name="_bg__search_ek1_color">#F3F3F3</color>
+    <color name="lable_color">#000000</color>
+    <color name="_bg__secondary_button_ek1_color">#707991</color>
 </resources>

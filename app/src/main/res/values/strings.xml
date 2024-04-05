@@ -37,4 +37,6 @@
     <string name="kсal">kсal</string>
     <string name="delete">Удалить</string>
     <string name="prod">Продукты</string>
+    <string name="ek_img_content">ExportKit Image</string>
+    <string name="lable_string">Text</string>
 </resources>

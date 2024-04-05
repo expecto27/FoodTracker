@@ -43,7 +43,7 @@ class MainFragment : Fragment() {
         this.addCard(
             EatingCard(
                 R.drawable.breakfast,
-                R.color.purple_200,
+                R.color.purple_500,
                 getString(R.string.breakfast),
                 changeListener
             )
@@ -59,7 +59,7 @@ class MainFragment : Fragment() {
         this.addCard(
             EatingCard(
                 R.drawable.lunch,
-                R.color.purple_700,
+                R.color.purple_500,
                 getString(R.string.dinner),
                 changeListener
             )

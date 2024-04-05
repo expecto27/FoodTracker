@@ -28,49 +28,50 @@
 
     <ImageView
         android:id="@+id/union"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginStart="20dp"
-        android:contentDescription="@string/food_search"
         android:src="@drawable/union"
         app:layout_constraintBottom_toBottomOf="@+id/_bg__search_____ek1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/food_search" />
 
 
     <ImageButton
         android:id="@+id/cancel_search"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
         android:layout_marginEnd="20dp"
-        android:contentDescription="@string/food_search"
         android:src="@drawable/union_ek1"
         app:layout_constraintBottom_toBottomOf="@+id/_bg__search_____ek1"
         app:layout_constraintEnd_toEndOf="@+id/_bg__search_____ek1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/food_search" />
 
 
     <ImageButton
-
+        
         android:id="@+id/add_food"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:contentDescription="@string/food_search"
+        android:layout_width="21.88dp"
+        android:layout_height="21dp"
         android:src="@drawable/union_ek2"
         app:layout_constraintBottom_toBottomOf="@+id/_bg__search_____ek1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/_bg__search_____ek1"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/food_search" />
 
     <View
         android:id="@+id/cancel"
         android:layout_width="191dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="20dp"
         android:background="@drawable/_bg__secondary_button_ek1_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20dp"
+        />
 
     <TextView
         android:id="@+id/__title"
