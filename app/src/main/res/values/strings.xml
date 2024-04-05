@@ -34,4 +34,6 @@
     <string name="protein">Белки</string>
     <string name="energy">Калорийность</string>
     <string name="per_gramm">/100g</string>
+    <string name="kсal">kсal</string>
+    <string name="delete">Удалить</string>
 </resources>

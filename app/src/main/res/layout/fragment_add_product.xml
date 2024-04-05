@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="kkal"
+                android:text="@string/kсal"
                 app:layout_constraintBaseline_toBaselineOf="@id/calories"
                 app:layout_constraintStart_toEndOf="@+id/calories" />
 

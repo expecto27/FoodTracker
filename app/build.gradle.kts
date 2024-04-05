@@ -59,6 +59,7 @@ dependencies {
     //di
     implementation("com.google.dagger:hilt-android:2.51")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     kapt("com.google.dagger:hilt-compiler:2.51")
 
     // room
