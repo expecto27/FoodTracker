@@ -16,11 +16,11 @@
     <string name="third_degree_obesity">Ожирение третьей степени</string>
     <string name="unknown_verdict">Проверьте корректность введенных данных</string>
     <string name="breakfast">Завтрак</string>
-    <string name="lunch">Обед</string>
-    <string name="dinner">Ужин</string>
+    <string name="lunch">Обед🥗</string>
+    <string name="dinner">Ужин🥘</string>
     <string name="addition">Добавить приём пищи</string>
     <string name="top_view_discriprion">topView</string>
-    <string name="fast_food">Перекус</string>
+    <string name="fast_food">Перекус🍪</string>
     <string name="add">Добавить</string>
     <string name="home">Главная</string>
     <string name="stat">Статистика</string>
@@ -39,4 +39,5 @@
     <string name="prod">Продукты</string>
     <string name="ek_img_content">ExportKit Image</string>
     <string name="lable_string">Text</string>
+    <string name="mainbar1">Завтрак 🍳</string>
 </resources>

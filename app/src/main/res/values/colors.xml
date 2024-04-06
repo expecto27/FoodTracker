@@ -10,6 +10,7 @@
     <color name="red">#FF0000</color>
     <color name="green">#00FF00</color>
 
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
@@ -17,4 +18,13 @@
     <color name="_bg__search_ek1_color">#F3F3F3</color>
     <color name="lable_color">#000000</color>
     <color name="_bg__secondary_button_ek1_color">#707991</color>
+
+
+
+    <color name="_bg__android_large___2_color">#FFFFFF</color>
+    <color name="_bg__size___12_color">#000000</color>
+    <color name="title_color">#001018</color>
+    <color name="_bg__progress_bar_ek1_color">#EFF1F3</color>
+    <color name="_bg__resize_ek1_color">#007DBC</color>
+
 </resources>

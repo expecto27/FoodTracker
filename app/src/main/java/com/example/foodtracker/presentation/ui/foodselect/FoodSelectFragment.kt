@@ -42,7 +42,7 @@ class FoodSelectFragment : Fragment() {
         binding.addFood.setOnClickListener {
             (activity as FragmentChanger).changeMainFragment(AddProductFragment.newInstance())
         }
-        viewModel.loadMyFood()
+        //viewModel.loadMyFood()
         return binding.root
     }
 

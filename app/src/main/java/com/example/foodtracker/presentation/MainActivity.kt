@@ -12,6 +12,7 @@ import com.example.foodtracker.presentation.ui.navigation.INavigationManager
 import com.example.foodtracker.presentation.ui.navigation.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), FragmentChanger {
 
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity(), FragmentChanger {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         binding.bottomNav.setOnItemSelectedListener {item ->
 
