@@ -40,4 +40,5 @@
     <string name="ek_img_content">ExportKit Image</string>
     <string name="lable_string">Text</string>
     <string name="mainbar1">Завтрак 🍳</string>
+    <string name="image_product">image product</string>
 </resources>

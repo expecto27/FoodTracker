@@ -26,7 +26,6 @@ class MainFragment : Fragment() {
     val viewModel: MainViewModel by viewModels()
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,22 +35,19 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.foods1.setOnClickListener{
+        binding.foods1.setOnClickListener {
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
-        binding.foods2.setOnClickListener{
+        binding.foods2.setOnClickListener {
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
-        binding.foods3.setOnClickListener{
+        binding.foods3.setOnClickListener {
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
-        binding.foods4.setOnClickListener{
+        binding.foods4.setOnClickListener {
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
     }
-
 }

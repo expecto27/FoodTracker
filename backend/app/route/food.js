@@ -1,4 +1,3 @@
-//const { Sequence } = require("mysql2/typings/mysql/lib/protocol/sequences/Sequence");
 const { Sequelize} = require("../config/db.config");
 module.exports = (app) => {
 

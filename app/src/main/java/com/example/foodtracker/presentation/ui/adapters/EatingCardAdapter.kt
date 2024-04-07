@@ -9,28 +9,18 @@ import com.example.foodtracker.databinding.EatingCardBinding
 import com.example.foodtracker.presentation.ui.models.AdditionCard
 import com.example.foodtracker.presentation.ui.models.ICard
 import com.example.foodtracker.presentation.ui.models.EatingCard
+import com.example.foodtracker.presentation.ui.models.Product
 
 class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
 
-    private val cardList = ArrayList<ICard>()
+    private val cardList = ArrayList<Product>()
 
     class CardHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = EatingCardBinding.bind(item)
 
-        fun bind(card: ICard) {
+        fun bind(card: Product) {
             with(binding) {
-                title.text = card.title
-                cardImage.setImageResource(card.imageId)
-                cardView.setCardBackgroundColor(card.color)
-            }
-            if(card is AdditionCard){
-                binding.cardView.setOnClickListener {
-                    card.listener.invoke()
-                }
-            } else if(card is EatingCard){
-                binding.cardView.setOnClickListener {
-                    card.changeListener.invoke()
-                }
+                title.text = card.name
             }
         }
     }
@@ -38,7 +28,7 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(R.layout.eating_card, parent, false)
+            .inflate(R.layout.product_item, parent, false)
         return CardHolder(view)
     }
 
@@ -48,14 +38,9 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
         holder.bind(cardList[position])
     }
 
-    fun addCard(card: ICard){
+    fun addCard(card: Product){
         cardList.add(card)
         notifyDataSetChanged()
     }
-    fun addCustomCard(card: ICard){
-        val temp = cardList[itemCount-1]
-        cardList[itemCount - 1] = card
-        cardList.add(temp)
-        notifyDataSetChanged()
-    }
+
 }
