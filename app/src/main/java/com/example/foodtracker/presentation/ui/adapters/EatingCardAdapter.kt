@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.EatingCardBinding
+import com.example.foodtracker.databinding.ProductItemBinding
 import com.example.foodtracker.presentation.ui.models.AdditionCard
 import com.example.foodtracker.presentation.ui.models.ICard
 import com.example.foodtracker.presentation.ui.models.EatingCard
@@ -16,11 +17,12 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
     private val cardList = ArrayList<Product>()
 
     class CardHolder(item: View) : RecyclerView.ViewHolder(item) {
-        private val binding = EatingCardBinding.bind(item)
+        private val binding = ProductItemBinding.bind(item)
 
         fun bind(card: Product) {
             with(binding) {
                 title.text = card.name
+                cardImage.setImageResource(R.drawable.empty_image)
             }
         }
     }

@@ -15,7 +15,7 @@ class MyProductAdapter : RecyclerView.Adapter<MyProductAdapter.ProductHolder>() 
         fun bind(card: Product){
             val perGramm = "/100g"
             with(binding){
-                title.text = card.name
+                title2.text = card.name
                 calories.text = "${card.calories} kcal"
                 protein.text = "${card.protein} $perGramm"
                 fat.text = "${card.fat} $perGramm"
