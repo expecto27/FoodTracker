@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.databinding.FragmentFoodSelectBinding
 import com.example.foodtracker.presentation.FragmentChanger
+import com.example.foodtracker.presentation.ui.adapters.EatingCardAdapter
 import com.example.foodtracker.presentation.ui.addproduct.AddProductFragment
+import com.example.foodtracker.presentation.ui.models.Product
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,6 +24,7 @@ class FoodSelectFragment : Fragment() {
 
     private lateinit var binding: FragmentFoodSelectBinding
     private val viewModel: FoodSelectViewModel by viewModels()
+    private lateinit var result: List<Product>
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,12 +38,22 @@ class FoodSelectFragment : Fragment() {
                 .getInstance()
                 .newEditable(newData)
         }
-
+        val eatingAdapter = EatingCardAdapter()
+        binding.rv.apply {
+            adapter = eatingAdapter
+        }
         binding.cancel.setOnClickListener {
             (activity as FragmentChanger).backInBackStack()
         }
         binding.addFood.setOnClickListener {
             (activity as FragmentChanger).changeMainFragment(AddProductFragment.newInstance())
+        }
+        binding.cancelSearch.setOnClickListener{
+            viewModel.setLivaDataText(binding.foodSearch.text.toString())
+            result = viewModel.loadMyFood()
+            for(item in result){
+                eatingAdapter.addCard(item)
+            }
         }
         //viewModel.loadMyFood()
         return binding.root

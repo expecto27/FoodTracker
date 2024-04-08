@@ -1,7 +1,9 @@
 package com.example.foodtracker.di
 
+import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.domain.usecase.CalculateIMT
 import com.example.foodtracker.domain.usecase.GetImtVerdict
+import com.example.foodtracker.domain.usecase.SearchProducts
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -21,5 +23,11 @@ class DomainModule{
     @ViewModelScoped
     fun provideGetImtVerdict(): GetImtVerdict{
         return GetImtVerdict()
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideSearchProduct(): SearchProducts{
+        return SearchProducts(ProductApiRepositoryImpl())
     }
 }
