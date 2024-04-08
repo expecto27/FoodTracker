@@ -6,7 +6,7 @@ import com.example.foodtracker.domain.repository.ProductApiRepository
 import retrofit2.Call
 
 class ProductApiRepositoryImpl: ProductApiRepository {
-    override fun getSearchData(query: String?): List<ProductFromAPI> {
+    override fun getSearchData(query: String?): Call<List<ProductFromAPI>> {
         return Network.getAPI().getData(query)
     }
 }

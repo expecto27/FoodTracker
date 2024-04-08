@@ -55,7 +55,6 @@ class FoodSelectFragment : Fragment() {
                 eatingAdapter.addCard(item)
             }
         }
-        //viewModel.loadMyFood()
         return binding.root
     }
 
