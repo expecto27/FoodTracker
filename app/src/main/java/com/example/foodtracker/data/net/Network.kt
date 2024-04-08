@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit
 
 
 object Network {
-    private val BASE_URL = "https://10.0.2.2:3000"
+    private val BASE_URL = "http://10.0.2.2:3000"
     private val okHttpClient:OkHttpClient? = OkHttpClient.Builder()
     .connectTimeout(30, TimeUnit.SECONDS) // Установите желаемое время ожидания подключения
     .readTimeout(30, TimeUnit.SECONDS) // Установите желаемое время ожидания чтения данных

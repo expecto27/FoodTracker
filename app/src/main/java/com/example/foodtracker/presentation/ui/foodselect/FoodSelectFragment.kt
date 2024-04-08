@@ -39,6 +39,13 @@ class FoodSelectFragment : Fragment() {
                 .newEditable(newData)
         }
         val eatingAdapter = EatingCardAdapter()
+
+        viewModel.products.observe(viewLifecycleOwner){ newData ->
+            newData.map {
+                eatingAdapter.addCard(it)
+            }
+        }
+
         binding.rv.apply {
             adapter = eatingAdapter
         }
@@ -50,10 +57,7 @@ class FoodSelectFragment : Fragment() {
         }
         binding.cancelSearch.setOnClickListener{
             viewModel.setLivaDataText(binding.foodSearch.text.toString())
-            result = viewModel.loadMyFood()
-            for(item in result){
-                eatingAdapter.addCard(item)
-            }
+            viewModel.loadMyFood()
         }
         return binding.root
     }

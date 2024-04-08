@@ -31,42 +31,36 @@ class FoodSelectViewModel @Inject constructor(
     val searchData: LiveData<String>
         get() = _searchData
 
+    private val _products: MutableLiveData<List<Product>> by lazy {
+        MutableLiveData()
+    }
+    val products: LiveData<List<Product>>
+        get() = _products
+
+
     fun setLivaDataText(value: String) {
         _searchData.value = value
     }
 
-    fun loadMyFood(): List<Product> {
-        val res = viewModelScope.async(Dispatchers.Default) {
+    fun loadMyFood() {
+        var products = viewModelScope.async(Dispatchers.Default) {
             val resultFromAPI = searchProducts.execute(_searchData.value).execute()
-            resultFromAPI
-        }
-        val answer = mutableListOf<Product>()
-        viewModelScope.launch {
-            val result = res.await()
-            if(result.body() != null) {
-                for (item in result.body()!!) {
-                    answer.add(
-                        Product(
-                            name = item.productName,
-                            calories = item.energyKcal100g,
-                            protein = item.proteins100g,
-                            fat = item.fat100g,
-                            carbohydrates = item.carbohydrates100g
-                        )
+                val productList = if(resultFromAPI.isSuccessful) { resultFromAPI.body()?.map { item ->
+                    Product(
+                        name = item.productName,
+                        calories = item.energyKcal100g,
+                        protein = item.proteins100g,
+                        fat = item.fat100g,
+                        carbohydrates = item.carbohydrates100g
                     )
                 }
+            } else {
+                null
             }
+            productList
         }
-        return answer
+        viewModelScope.launch {
+            _products.value = products.await()
+        }
     }
-
-//    fun loadMyFood(){
-//        viewModelScope.launch(Dispatchers.Default) {
-//            val lst = productRepository.getAll()
-//            for(item in lst){
-//                Log.d("dsds", item.toString())
-//            }
-//        }
-//    }
-
 }
