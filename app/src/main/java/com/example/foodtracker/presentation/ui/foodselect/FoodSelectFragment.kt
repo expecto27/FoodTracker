@@ -58,6 +58,7 @@ class FoodSelectFragment : Fragment() {
             (activity as FragmentChanger).changeMainFragment(AddProductFragment.newInstance())
         }
         binding.cancelSearch.setOnClickListener{
+            eatingAdapter.clear()
             viewModel.setLivaDataText(binding.foodSearch.text.toString())
             viewModel.loadMyFood()
         }

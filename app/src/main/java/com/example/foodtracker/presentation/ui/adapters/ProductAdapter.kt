@@ -10,6 +10,11 @@ import com.example.foodtracker.R
 import com.example.foodtracker.databinding.ProductItemBinding
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.models.Product
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class ProductAdapter(private val context: Context?) : RecyclerView.Adapter<ProductAdapter.CardHolder>() {
 
@@ -21,7 +26,12 @@ class ProductAdapter(private val context: Context?) : RecyclerView.Adapter<Produ
         private val binding = ProductItemBinding.bind(item)
 
         fun bind(card: Product, context: Context?, imageLoader: ImageLoader) {
-            imageLoader.loadImage(context, card.image_small_url, binding.cardImage)
+            runBlocking {
+                launch {
+                    imageLoader.loadImage(context, card.image_small_url, binding.cardImage)
+                }
+            }
+
             with(binding) {
                 title.text = card.name
                 cardImage.setImageResource(R.drawable.empty_image)
@@ -47,4 +57,8 @@ class ProductAdapter(private val context: Context?) : RecyclerView.Adapter<Produ
         notifyDataSetChanged()
     }
 
+    fun clear(){
+        cardList.clear()
+        notifyDataSetChanged()
+    }
 }
