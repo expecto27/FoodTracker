@@ -26,6 +26,8 @@ class MyProductViewModel @Inject constructor(
             for (item in data.await()){
                 adapter.addCard(com.example.foodtracker.presentation.ui.models.Product(
                     name = item.name,
+                    image_url = null,
+                    image_small_url = null,
                     calories = item.calories,
                     protein = item.protein,
                     fat = item.fat,

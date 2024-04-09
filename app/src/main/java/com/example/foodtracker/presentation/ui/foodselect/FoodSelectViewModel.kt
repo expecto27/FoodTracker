@@ -43,11 +43,13 @@ class FoodSelectViewModel @Inject constructor(
     }
 
     fun loadMyFood() {
-        var products = viewModelScope.async(Dispatchers.Default) {
+        val products = viewModelScope.async(Dispatchers.Default) {
             val resultFromAPI = searchProducts.execute(_searchData.value).execute()
                 val productList = if(resultFromAPI.isSuccessful) { resultFromAPI.body()?.map { item ->
                     Product(
                         name = item.productName,
+                        image_url = item.imageUrl,
+                        image_small_url = item.imageSmallUrl,
                         calories = item.energyKcal100g,
                         protein = item.proteins100g,
                         fat = item.fat100g,

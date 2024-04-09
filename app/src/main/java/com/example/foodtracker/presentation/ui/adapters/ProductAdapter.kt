@@ -1,25 +1,27 @@
 package com.example.foodtracker.presentation.ui.adapters
 
+import android.content.Context
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtracker.R
-import com.example.foodtracker.databinding.EatingCardBinding
 import com.example.foodtracker.databinding.ProductItemBinding
-import com.example.foodtracker.presentation.ui.models.AdditionCard
-import com.example.foodtracker.presentation.ui.models.ICard
-import com.example.foodtracker.presentation.ui.models.EatingCard
+import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.models.Product
 
-class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
+class ProductAdapter(private val context: Context?) : RecyclerView.Adapter<ProductAdapter.CardHolder>() {
 
     private val cardList = ArrayList<Product>()
-
+    private val imageLoader: ImageLoader by lazy {
+        ImageLoader()
+    }
     class CardHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ProductItemBinding.bind(item)
 
-        fun bind(card: Product) {
+        fun bind(card: Product, context: Context?, imageLoader: ImageLoader) {
+            imageLoader.loadImage(context, card.image_small_url, binding.cardImage)
             with(binding) {
                 title.text = card.name
                 cardImage.setImageResource(R.drawable.empty_image)
@@ -37,7 +39,7 @@ class EatingCardAdapter : RecyclerView.Adapter<EatingCardAdapter.CardHolder>() {
     override fun getItemCount(): Int = cardList.size
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
-        holder.bind(cardList[position])
+        holder.bind(cardList[position], this.context, imageLoader)
     }
 
     fun addCard(card: Product){

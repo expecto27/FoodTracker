@@ -6,14 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foodtracker.R
 import com.example.foodtracker.databinding.FragmentMainBinding
 import com.example.foodtracker.presentation.FragmentChanger
-import com.example.foodtracker.presentation.ui.adapters.EatingCardAdapter
 import com.example.foodtracker.presentation.ui.foodselect.FoodSelectFragment
-import com.example.foodtracker.presentation.ui.models.AdditionCard
-import com.example.foodtracker.presentation.ui.models.EatingCard
 
 class MainFragment : Fragment() {
 
