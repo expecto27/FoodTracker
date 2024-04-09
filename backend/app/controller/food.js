@@ -5,13 +5,10 @@ exports.getFoods = async (req, res) => {
     try {
         const { title } = req.query;
         const query = `
-            SELECT * FROM food
-            WHERE product_name LIKE :title
-            OR categories LIKE :title
-            OR brands LIKE :title;
+                SELECT * FROM food WHERE MATCH(product_name, categories, brands) AGAINST(:title);
         `;
         const foods = await sequelize.query(query, {
-            replacements: { title: `%${title}%` },
+            replacements: { title: `${title}` },
             type: sequelize.QueryTypes.SELECT
         });
         res.json(foods);
