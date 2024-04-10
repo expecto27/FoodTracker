@@ -7,7 +7,6 @@ import com.example.foodtracker.data.models.Product
 
 @Dao
 interface ProductDao {
-
     @Query("SELECT * FROM products")
     fun getAll() : List<Product>
 
