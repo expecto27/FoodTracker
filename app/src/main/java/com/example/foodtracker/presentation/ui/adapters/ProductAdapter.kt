@@ -31,10 +31,8 @@ class ProductAdapter(private val context: Context?) : RecyclerView.Adapter<Produ
                     imageLoader.loadImage(context, card.image_small_url, binding.cardImage)
                 }
             }
-
             with(binding) {
                 title.text = card.name
-                cardImage.setImageResource(R.drawable.empty_image)
             }
         }
     }
