@@ -32,11 +32,11 @@
         android:layout_width="18dp"
         android:layout_height="18dp"
         android:layout_marginStart="20dp"
+        android:contentDescription="@string/food_search"
         android:src="@drawable/union"
         app:layout_constraintBottom_toBottomOf="@+id/_bg__search_____ek1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/food_search" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageButton
@@ -57,12 +57,12 @@
         android:id="@+id/add_food"
         android:layout_width="48dp"
         android:layout_height="48dp"
+        android:contentDescription="@string/food_search"
         android:src="@drawable/union_ek2"
         app:layout_constraintBottom_toBottomOf="@+id/_bg__search_____ek1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/_bg__search_____ek1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/food_search" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
@@ -78,12 +78,11 @@
         android:id="@+id/cancel"
         android:layout_width="191dp"
         android:layout_height="48dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/_bg__secondary_button_ek1_shape"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="20dp"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/__title"
@@ -93,7 +92,6 @@
         android:gravity="center"
         android:text="@string/cancel"
         android:textColor="@color/_bg__android_large___1_ek2_color"
-
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/cancel"

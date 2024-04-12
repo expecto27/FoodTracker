@@ -84,4 +84,8 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="empty_title">empty title</string>
+    <string name="brands">brands</string>
+    <string name="categories">categories</string>
+    <string name="gr">г.</string>
 </resources>

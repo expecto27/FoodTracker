@@ -3,25 +3,30 @@ package com.example.foodtracker.presentation.ui.adapters
 import android.content.Context
 import android.media.Image
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.ProductItemBinding
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.models.Product
+import com.example.foodtracker.presentation.ui.navigation.NavigationManager
+import com.example.foodtracker.presentation.ui.product.ProductFragment
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class ProductAdapter(private val context: Context?) : RecyclerView.Adapter<ProductAdapter.CardHolder>() {
+class ProductAdapter(private val context: Context?) :RecyclerView.Adapter<ProductAdapter.CardHolder>() {
 
     private val cardList = ArrayList<Product>()
     private val imageLoader: ImageLoader by lazy {
         ImageLoader()
     }
+
     class CardHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ProductItemBinding.bind(item)
 
@@ -48,14 +53,22 @@ class ProductAdapter(private val context: Context?) : RecyclerView.Adapter<Produ
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
         holder.bind(cardList[position], this.context, imageLoader)
+        holder.itemView.setOnClickListener {
+            val navManager = NavigationManager((context as AppCompatActivity).supportFragmentManager)
+            navManager.replaceToBackStack(R.id.mainFragment, ProductFragment.newInstance(cardList[position]))
+        }
     }
 
-    fun addCard(card: Product){
+    fun getProduct(index: Int): Product {
+        return cardList[index]
+    }
+
+    fun addCard(card: Product) {
         cardList.add(card)
         notifyDataSetChanged()
     }
 
-    fun clear(){
+    fun clear() {
         cardList.clear()
         notifyDataSetChanged()
     }
