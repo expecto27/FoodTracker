@@ -11,7 +11,7 @@
             android:id="@+id/stat_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Сегодня 😼"
+            android:text="@string/today"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/stat"
@@ -114,9 +114,9 @@
             android:background="@drawable/spacer2"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/foods2"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/stat"
             app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/stat"
             app:layout_constraintTop_toBottomOf="@+id/stat" />
 
         <TextView
@@ -137,8 +137,8 @@
             android:background="@drawable/spacer2"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/foods3"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/stat"
+            app:layout_constraintStart_toStartOf="@+id/stat"
             app:layout_constraintTop_toBottomOf="@+id/foods1" />
 
         <TextView
@@ -159,8 +159,8 @@
             android:background="@drawable/spacer2"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/foods4"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/stat"
+            app:layout_constraintStart_toStartOf="@+id/stat"
             app:layout_constraintTop_toBottomOf="@+id/foods2" />
 
         <TextView
@@ -181,8 +181,8 @@
             android:background="@drawable/spacer2"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/foods3"
+            app:layout_constraintStart_toStartOf="@+id/foods3"
             app:layout_constraintTop_toBottomOf="@+id/foods3" />
 
 

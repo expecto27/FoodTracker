@@ -19,7 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class FoodSelectViewModel @Inject constructor(
-    private var savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
     private var productRepository: ProductRepository,
     private var searchProducts: SearchProducts
 ) : ViewModel() {
@@ -43,7 +43,7 @@ class FoodSelectViewModel @Inject constructor(
     }
 
     fun loadMyFood() {
-        val products = viewModelScope.async(Dispatchers.Default) {
+        val products = viewModelScope.async(Dispatchers.IO) {
             val resultFromAPI = searchProducts.execute(_searchData.value).execute()
                 val productList = if(resultFromAPI.isSuccessful) { resultFromAPI.body()?.map { item ->
                     Product(
@@ -53,7 +53,9 @@ class FoodSelectViewModel @Inject constructor(
                         calories = item.energyKcal100g,
                         protein = item.proteins100g,
                         fat = item.fat100g,
-                        carbohydrates = item.carbohydrates100g
+                        carbohydrates = item.carbohydrates100g,
+                        brands = item.brands,
+                        categories = item.categories
                     )
                 }
             } else {

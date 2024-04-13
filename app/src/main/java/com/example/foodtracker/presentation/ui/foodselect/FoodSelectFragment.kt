@@ -5,6 +5,7 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,6 @@ import com.example.foodtracker.databinding.FragmentFoodSelectBinding
 import com.example.foodtracker.presentation.FragmentChanger
 import com.example.foodtracker.presentation.ui.adapters.ProductAdapter
 import com.example.foodtracker.presentation.ui.addproduct.AddProductFragment
-import com.example.foodtracker.presentation.ui.product.ProductFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +25,6 @@ class FoodSelectFragment : Fragment() {
 
     private lateinit var binding: FragmentFoodSelectBinding
     private val viewModel: FoodSelectViewModel by viewModels()
-    private lateinit var _adapter: ProductAdapter
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,16 +39,16 @@ class FoodSelectFragment : Fragment() {
                 .newEditable(newData)
         }
 
-        _adapter = ProductAdapter(context)
+        val productAdapter = ProductAdapter(activity as AppCompatActivity)
 
         viewModel.products.observe(viewLifecycleOwner){ newData ->
             newData.map {
-                _adapter.addCard(it)
+                productAdapter.addCard(it)
             }
         }
 
         binding.rv.apply {
-            adapter = adapter
+            adapter = productAdapter
             layoutManager = LinearLayoutManager(context)
         }
 
@@ -60,7 +59,7 @@ class FoodSelectFragment : Fragment() {
             (activity as FragmentChanger).changeMainFragment(AddProductFragment.newInstance())
         }
         binding.cancelSearch.setOnClickListener{
-            _adapter.clear()
+            productAdapter.clear()
             viewModel.setLivaDataText(binding.foodSearch.text.toString())
             viewModel.loadMyFood()
         }

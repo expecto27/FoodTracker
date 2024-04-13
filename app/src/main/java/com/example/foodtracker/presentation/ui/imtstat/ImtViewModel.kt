@@ -4,14 +4,12 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.foodtracker.R
-import com.example.foodtracker.di.DomainModule
 import com.example.foodtracker.domain.models.Height
 import com.example.foodtracker.domain.models.ImtVerdict
 import com.example.foodtracker.domain.models.IndexIMT
 import com.example.foodtracker.domain.models.Weight
 import com.example.foodtracker.domain.usecase.CalculateIMT
 import com.example.foodtracker.domain.usecase.GetImtVerdict
-import dagger.assisted.Assisted
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -22,10 +20,6 @@ class ImtViewModel @Inject constructor(
     private var calculateIMT: CalculateIMT,
     private var getImtVerdict: GetImtVerdict
 ) : ViewModel() {
-    init {
-
-    }
-
     fun getSnackBarVerdict(context: Context, weight: Double, height: Double): String {
 
         val imt: IndexIMT = calculateIMT.execute(Weight(weight), Height(height))

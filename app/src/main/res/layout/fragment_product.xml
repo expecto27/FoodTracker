@@ -1,9 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <TextView
         android:id="@+id/title_eat"
@@ -19,7 +17,7 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
+        android:layout_width="150dp"
         android:layout_height="200dp"
         android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
@@ -184,4 +182,5 @@
         app:layout_constraintBottom_toTopOf="@+id/add"
         app:layout_constraintEnd_toStartOf="@+id/weight_gr"
         app:layout_constraintStart_toStartOf="@+id/add" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

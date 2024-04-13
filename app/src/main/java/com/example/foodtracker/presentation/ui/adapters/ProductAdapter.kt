@@ -59,10 +59,6 @@ class ProductAdapter(private val context: Context?) :RecyclerView.Adapter<Produc
         }
     }
 
-    fun getProduct(index: Int): Product {
-        return cardList[index]
-    }
-
     fun addCard(card: Product) {
         cardList.add(card)
         notifyDataSetChanged()

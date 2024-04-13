@@ -14,25 +14,29 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyProductViewModel @Inject constructor(
-    private var savedStateHandle: SavedStateHandle,
+    private val savedStateHandle: SavedStateHandle,
     private var productRepository: ProductRepository
 ) : ViewModel() {
 
     fun initAdapterList(adapter: MyProductAdapter) {
-        val data = viewModelScope.async(Dispatchers.Default) {
+        val data = viewModelScope.async(Dispatchers.IO) {
             return@async productRepository.getAll()
         }
-        viewModelScope.launch{
-            for (item in data.await()){
-                adapter.addCard(com.example.foodtracker.presentation.ui.models.Product(
-                    name = item.name,
-                    image_url = null,
-                    image_small_url = null,
-                    calories = item.calories,
-                    protein = item.protein,
-                    fat = item.fat,
-                    carbohydrates = item.carbohydrates
-                ))
+        viewModelScope.launch {
+            for (item in data.await()) {
+                adapter.addCard(
+                    com.example.foodtracker.presentation.ui.models.Product(
+                        name = item.name,
+                        image_url = null,
+                        image_small_url = null,
+                        calories = item.calories,
+                        protein = item.protein,
+                        fat = item.fat,
+                        carbohydrates = item.carbohydrates,
+                        categories = null,
+                        brands = null
+                    )
+                )
             }
         }
     }

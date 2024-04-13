@@ -22,7 +22,7 @@
     <string name="top_view_discriprion">topView</string>
     <string name="fast_food">Перекус🍪</string>
     <string name="add">Добавить</string>
-    <string name="home">Главная</string>
+    <string name="home">Дневник</string>
     <string name="stat">Статистика</string>
     <string name="food_search">Поиск еды</string>
     <string name="cancel">Отмена</string>
@@ -88,4 +88,5 @@
     <string name="brands">brands</string>
     <string name="categories">categories</string>
     <string name="gr">г.</string>
+    <string name="today">Сегодня 😼</string>
 </resources>
