@@ -1,9 +1,7 @@
 package com.example.foodtracker.presentation.ui.adapters
 
 import android.content.Context
-import android.media.Image
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -14,9 +12,6 @@ import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.models.Product
 import com.example.foodtracker.presentation.ui.navigation.NavigationManager
 import com.example.foodtracker.presentation.ui.product.ProductFragment
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -61,11 +56,11 @@ class ProductAdapter(private val context: Context?) :RecyclerView.Adapter<Produc
 
     fun addCard(card: Product) {
         cardList.add(card)
-        notifyDataSetChanged()
+        notifyItemInserted(cardList.size - 1)
     }
 
     fun clear() {
         cardList.clear()
-        notifyDataSetChanged()
+        notifyItemRemoved(cardList.size)
     }
 }

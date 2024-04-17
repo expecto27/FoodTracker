@@ -9,4 +9,6 @@ db.sequelize.sync({force: false});
 
 app.listen(3000);
 var food = require('./app/route/food');
+var auth = require('./app/route/auth.js');
 food(app);
+auth(app);

@@ -19,3 +19,4 @@ data class Product(
     @ColumnInfo(name = "carbohydrates")
     val carbohydrates: Float?
 )
+

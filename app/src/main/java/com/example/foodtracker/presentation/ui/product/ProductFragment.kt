@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.foodtracker.databinding.FragmentProductBinding
 import com.example.foodtracker.presentation.FragmentChanger
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.models.Product
+import com.example.foodtracker.presentation.ui.navigation.NavigationManager
 import kotlinx.coroutines.launch
 
 class ProductFragment(private val item: Product) : Fragment() {
@@ -22,6 +24,9 @@ class ProductFragment(private val item: Product) : Fragment() {
 
     private val viewModel: ProductViewModel by viewModels()
     private lateinit var binding: FragmentProductBinding
+    private val a: Int? by lazy{
+        4
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

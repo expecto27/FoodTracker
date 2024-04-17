@@ -17,7 +17,6 @@ class MyProductViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private var productRepository: ProductRepository
 ) : ViewModel() {
-
     fun initAdapterList(adapter: MyProductAdapter) {
         val data = viewModelScope.async(Dispatchers.IO) {
             return@async productRepository.getAll()

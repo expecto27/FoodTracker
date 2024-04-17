@@ -104,6 +104,15 @@ module.exports = function(sequelize, DataTypes) {
           { name: "id" },
         ]
       },
+      {
+        name: "index_table_on_name_brangs_categories",
+        type: "FULLTEXT",
+        fields: [
+          { name: "product_name" },
+          { name: "brands" },
+          { name: "categories" },
+        ]
+      },
     ]
   });
 };
