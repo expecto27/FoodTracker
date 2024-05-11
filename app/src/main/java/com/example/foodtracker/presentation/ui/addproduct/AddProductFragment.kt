@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.databinding.FragmentAddProductBinding
 import com.example.foodtracker.presentation.FragmentChanger
+import com.example.foodtracker.presentation.ui.models.Product
 import dagger.hilt.android.AndroidEntryPoint
 
 

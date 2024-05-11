@@ -9,7 +9,7 @@ import java.util.Date
 @Entity(tableName = "eat_day")
 data class EatDay(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int?,
     @ColumnInfo("server_id")
     val serverId: Int?,
     @ColumnInfo("local_id")

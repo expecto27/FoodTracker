@@ -38,11 +38,11 @@ abstract class AppDataBase : RoomDatabase() {
         private val MIGRATION_1_2 = object  : Migration(1, 2) {
             override fun migrate(db: SupportSQLiteDatabase) {
                 db.execSQL("CREATE TABLE IF NOT EXISTS eat_day (" +
-                        "id INTEGER PRIMARY KEY NOT NULL, " +
+                        "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         "server_id INTEGER, " +
                         "local_id INTEGER, " +
-                        "day LONG, " +
-                        "meal INTEGER)")
+                        "day INTEGER NOT NULL, " +
+                        "meal INTEGER NOT NULL)")
             }
         }
     }

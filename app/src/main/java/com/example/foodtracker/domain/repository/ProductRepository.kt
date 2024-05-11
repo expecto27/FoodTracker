@@ -1,9 +1,10 @@
 package com.example.foodtracker.domain.repository
 
-import com.example.foodtracker.data.models.Product
+import com.example.foodtracker.domain.models.MyProduct
+
 
 interface ProductRepository {
-    suspend fun save(product: Product)
-    suspend fun getAll() : List<Product>
-    suspend fun findByName(name: String) : List<Product>
+    fun save(product: MyProduct)
+    fun getAll() : List<MyProduct>
+    fun findByName(name: String) : List<MyProduct>
 }

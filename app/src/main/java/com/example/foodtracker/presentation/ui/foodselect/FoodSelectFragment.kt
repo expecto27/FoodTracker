@@ -17,7 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class FoodSelectFragment : Fragment() {
-
     companion object {
         @JvmStatic
         fun newInstance() = FoodSelectFragment()

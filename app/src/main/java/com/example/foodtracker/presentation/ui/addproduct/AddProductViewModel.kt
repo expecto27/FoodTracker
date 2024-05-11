@@ -4,7 +4,9 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.foodtracker.data.models.Product
+import com.example.foodtracker.domain.models.MyProduct
 import com.example.foodtracker.domain.repository.ProductRepository
+import com.example.foodtracker.domain.usecase.SaveMyProduct
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -16,7 +18,8 @@ class AddProductViewModel  @Inject constructor(
     private var productRepository: ProductRepository
 ) : ViewModel() {
     fun saveProduct(_name: String, _calories: Float, _protein: Float?, _fat: Float?, _carbohydrates: Float?){
-        val product : Product =  Product(
+
+        val product =  MyProduct(
             id = 0,
             name = _name,
             calories = _calories,
@@ -25,7 +28,7 @@ class AddProductViewModel  @Inject constructor(
             carbohydrates = _carbohydrates
         )
         viewModelScope.launch(Dispatchers.Default) {
-            productRepository.save(product)
+            SaveMyProduct(productRepository).execute(product)
         }
     }
 }

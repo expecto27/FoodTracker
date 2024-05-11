@@ -49,6 +49,10 @@ class ProductFragment(private val item: Product) : Fragment() {
             (activity as FragmentChanger).backInBackStack()
         }
 
+        binding.add.setOnClickListener {
+
+        }
+
         return binding.root
     }
 }
