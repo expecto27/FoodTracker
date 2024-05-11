@@ -5,9 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.databinding.FragmentMainBinding
+import com.example.foodtracker.domain.models.Meal
 import com.example.foodtracker.presentation.FragmentChanger
+import com.example.foodtracker.presentation.ui.SharedViewModel
 import com.example.foodtracker.presentation.ui.foodselect.FoodSelectFragment
 
 class MainFragment : Fragment() {
@@ -19,6 +22,7 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     val viewModel: MainViewModel by viewModels()
+    private val sharedViewModel : SharedViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -26,6 +30,7 @@ class MainFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        sharedViewModel.setMeal(null)
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -33,15 +38,19 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.foods1.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Breakfast)
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
         binding.foods2.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Lunch)
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
         binding.foods3.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Dinner)
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
         binding.foods4.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Other)
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
     }

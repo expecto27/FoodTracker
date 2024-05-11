@@ -5,7 +5,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 
 class ImageLoader {
-    suspend fun loadImage(context: Context?, url: String?, view: ImageView){
+    fun loadImage(context: Context?, url: String?, view: ImageView){
         Glide.with(context!!).load(url).into(view)
     }
 }

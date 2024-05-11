@@ -1,6 +1,6 @@
 var db = require('../config/db.config.js');
 var Food = db.food; // название модели смотреть в init-models.js
-const { sequelize} = require("../config/db.config");
+const {sequelize} = require("../config/db.config");
 exports.getFoods = async (req, res) => {
     try {
         const { title } = req.query;
