@@ -42,7 +42,8 @@ abstract class AppDataBase : RoomDatabase() {
                         "server_id INTEGER, " +
                         "local_id INTEGER, " +
                         "day INTEGER NOT NULL, " +
-                        "meal INTEGER NOT NULL)")
+                        "meal INTEGER NOT NULL," +
+                        "weight INTEGER NOT NULL)")
             }
         }
     }

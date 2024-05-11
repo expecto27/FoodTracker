@@ -89,4 +89,5 @@
     <string name="categories">categories</string>
     <string name="gr">г.</string>
     <string name="today">Сегодня 😼</string>
+    <string name="IMT">ИМТ</string>
 </resources>

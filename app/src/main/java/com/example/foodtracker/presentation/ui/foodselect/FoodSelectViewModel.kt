@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.foodtracker.domain.models.ProductFromAPI
 import com.example.foodtracker.domain.repository.ProductRepository
 import com.example.foodtracker.domain.usecase.SearchProducts
 import com.example.foodtracker.presentation.ui.models.Product
@@ -13,14 +12,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
 class FoodSelectViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private var productRepository: ProductRepository,
     private var searchProducts: SearchProducts
 ) : ViewModel() {
 
@@ -47,6 +43,7 @@ class FoodSelectViewModel @Inject constructor(
             val resultFromAPI = searchProducts.execute(_searchData.value).execute()
                 val productList = if(resultFromAPI.isSuccessful) { resultFromAPI.body()?.map { item ->
                     Product(
+                        id = item.id,
                         name = item.productName,
                         image_url = item.imageUrl,
                         image_small_url = item.imageSmallUrl,

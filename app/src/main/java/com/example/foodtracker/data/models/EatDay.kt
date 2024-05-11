@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.foodtracker.domain.models.Meal
+import com.example.foodtracker.domain.models.Weight
 import java.util.Date
 
 @Entity(tableName = "eat_day")
@@ -17,5 +18,7 @@ data class EatDay(
     @ColumnInfo("day")
     val day: Date,
     @ColumnInfo("meal")
-    val meal: Int
+    val meal: Int,
+    @ColumnInfo("weight")
+    val weight: Int
 )

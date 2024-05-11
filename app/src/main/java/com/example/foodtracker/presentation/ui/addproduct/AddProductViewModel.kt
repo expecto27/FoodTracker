@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class AddProductViewModel  @Inject constructor(
     private var savedStateHandle: SavedStateHandle,
-    private var productRepository: ProductRepository
+    private var saveMyProduct: SaveMyProduct
 ) : ViewModel() {
     fun saveProduct(_name: String, _calories: Float, _protein: Float?, _fat: Float?, _carbohydrates: Float?){
 
@@ -28,7 +28,7 @@ class AddProductViewModel  @Inject constructor(
             carbohydrates = _carbohydrates
         )
         viewModelScope.launch(Dispatchers.Default) {
-            SaveMyProduct(productRepository).execute(product)
+            saveMyProduct.execute(product)
         }
     }
 }

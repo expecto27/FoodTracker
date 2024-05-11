@@ -117,7 +117,12 @@
             app:layout_constraintEnd_toEndOf="@+id/stat"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/stat"
-            app:layout_constraintTop_toBottomOf="@+id/stat" />
+            app:layout_constraintTop_toBottomOf="@+id/stat" >
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/foods2_text"
@@ -139,7 +144,11 @@
             app:layout_constraintBottom_toTopOf="@id/foods3"
             app:layout_constraintEnd_toEndOf="@+id/stat"
             app:layout_constraintStart_toStartOf="@+id/stat"
-            app:layout_constraintTop_toBottomOf="@+id/foods1" />
+            app:layout_constraintTop_toBottomOf="@+id/foods1" >
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/foods3_text"
@@ -161,7 +170,12 @@
             app:layout_constraintBottom_toTopOf="@id/foods4"
             app:layout_constraintEnd_toEndOf="@+id/stat"
             app:layout_constraintStart_toStartOf="@+id/stat"
-            app:layout_constraintTop_toBottomOf="@+id/foods2" />
+            app:layout_constraintTop_toBottomOf="@+id/foods2" >
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/foods4_text"
@@ -183,7 +197,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/foods3"
             app:layout_constraintStart_toStartOf="@+id/foods3"
-            app:layout_constraintTop_toBottomOf="@+id/foods3" />
+            app:layout_constraintTop_toBottomOf="@+id/foods3" >
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,17 +7,19 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.example.foodtracker.databinding.FragmentProductBinding
+import com.example.foodtracker.domain.models.Meal
 import com.example.foodtracker.presentation.FragmentChanger
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.SharedViewModel
+import com.example.foodtracker.presentation.ui.main.MainFragment
 import com.example.foodtracker.presentation.ui.models.Product
-import com.example.foodtracker.presentation.ui.navigation.NavigationManager
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
-class ProductFragment(private val item: Product) : Fragment() {
+@AndroidEntryPoint
+class ProductFragment (
+    private val item: Product
+) : Fragment() {
 
     companion object {
         @JvmStatic
@@ -50,7 +52,20 @@ class ProductFragment(private val item: Product) : Fragment() {
         }
 
         binding.add.setOnClickListener {
-
+            Integer.getInteger(binding.weight.toString())?.let { it1 ->
+                viewModel.saveEating(
+                    id = null,
+                    serverId = item.id,
+                    localId = null ,
+                    // TODO: доделать когда время будет, тильта не будет
+                    meal = sharedViewModel.meal.value?: Meal.Other,
+                    // TODO: Прикрутить бродкаст ресивер потом
+                    weight = it1
+                )
+            }
+            (activity as FragmentChanger).changeMainFragment(
+                MainFragment.newInstance()
+            )
         }
 
         return binding.root
