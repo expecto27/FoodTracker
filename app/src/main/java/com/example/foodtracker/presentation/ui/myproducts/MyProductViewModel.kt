@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyProductViewModel @Inject constructor(
-    private val savedStateHandle: SavedStateHandle,
+    private var savedStateHandle: SavedStateHandle,
     private var productRepository: ProductRepository
 ) : ViewModel() {
     fun initAdapterList(adapter: MyProductAdapter) {

@@ -13,7 +13,7 @@ import com.example.foodtracker.data.database.dao.ProductDao
 import com.example.foodtracker.data.models.EatDay
 import com.example.foodtracker.data.models.Product
 
-@Database(entities = [Product::class, EatDay::class], version = 2, exportSchema = false)
+@Database(entities = [Product::class, EatDay::class], version = 3, exportSchema = false)
 @TypeConverters(DateConverter::class)
 abstract class AppDataBase : RoomDatabase() {
     abstract fun ProductDao(): ProductDao
@@ -29,7 +29,9 @@ abstract class AppDataBase : RoomDatabase() {
                     context.applicationContext,
                     AppDataBase::class.java,
                     "app_database"
-                ).addMigrations(MIGRATION_1_2).build()
+                )
+                    .addMigrations(MIGRATION_1_2)
+                    .addMigrations(MIGRATION_2_3).build()
                 INSTANCE = instance
                 instance
             }
@@ -42,8 +44,12 @@ abstract class AppDataBase : RoomDatabase() {
                         "server_id INTEGER, " +
                         "local_id INTEGER, " +
                         "day INTEGER NOT NULL, " +
-                        "meal INTEGER NOT NULL," +
-                        "weight INTEGER NOT NULL)")
+                        "meal INTEGER NOT NULL)")
+            }
+        }
+        private val MIGRATION_2_3 = object  : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE eat_day ADD COLUMN weight INTEGER NOT NULL DEFAULT 0")
             }
         }
     }

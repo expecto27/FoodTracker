@@ -5,6 +5,7 @@ import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
 import com.example.foodtracker.domain.repository.EatingRepository
 import com.example.foodtracker.domain.usecase.CalculateIMT
+import com.example.foodtracker.domain.usecase.GetEating
 import com.example.foodtracker.domain.usecase.GetImtVerdict
 import com.example.foodtracker.domain.usecase.SaveEating
 import com.example.foodtracker.domain.usecase.SaveMyProduct
@@ -48,4 +49,11 @@ class DomainModule{
     fun provideSaveEating(eatingRepository: EatingRepository): SaveEating{
         return SaveEating(eatingRepository)
     }
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetEating(eatingRepository: EatingRepository): GetEating{
+        return GetEating(eatingRepository)
+    }
+
 }

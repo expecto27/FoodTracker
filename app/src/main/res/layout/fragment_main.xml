@@ -118,9 +118,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/stat"
             app:layout_constraintTop_toBottomOf="@+id/stat" >
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+
 
         </LinearLayout>
 
@@ -145,9 +143,7 @@
             app:layout_constraintEnd_toEndOf="@+id/stat"
             app:layout_constraintStart_toStartOf="@+id/stat"
             app:layout_constraintTop_toBottomOf="@+id/foods1" >
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+
         </LinearLayout>
 
         <TextView
@@ -171,9 +167,7 @@
             app:layout_constraintEnd_toEndOf="@+id/stat"
             app:layout_constraintStart_toStartOf="@+id/stat"
             app:layout_constraintTop_toBottomOf="@+id/foods2" >
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+
 
         </LinearLayout>
 
@@ -198,9 +192,7 @@
             app:layout_constraintEnd_toEndOf="@+id/foods3"
             app:layout_constraintStart_toStartOf="@+id/foods3"
             app:layout_constraintTop_toBottomOf="@+id/foods3" >
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+
         </LinearLayout>
 
 

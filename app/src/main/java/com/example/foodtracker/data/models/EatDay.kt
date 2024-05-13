@@ -3,8 +3,6 @@ package com.example.foodtracker.data.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.foodtracker.domain.models.Meal
-import com.example.foodtracker.domain.models.Weight
 import java.util.Date
 
 @Entity(tableName = "eat_day")

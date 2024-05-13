@@ -17,7 +17,7 @@ import com.example.foodtracker.presentation.ui.models.Product
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductFragment (
+class ProductFragment(
     private val item: Product
 ) : Fragment() {
 
@@ -28,7 +28,7 @@ class ProductFragment (
 
     private val viewModel: ProductViewModel by viewModels()
     private lateinit var binding: FragmentProductBinding
-    private val sharedViewModel : SharedViewModel by activityViewModels()
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +36,12 @@ class ProductFragment (
     ): View {
         binding = FragmentProductBinding.inflate(inflater, container, false)
 
-        with(binding){
+        with(binding) {
             titleEat.text = item.name ?: ""
-            proteinsValue.text = if(item.protein == null) "0" else item.protein.toString()
-            fatsValue.text = if(item.fat == null) "0" else item.fat.toString()
-            carbohydratesValue.text = if(item.carbohydrates == null) "0" else item.categories.toString()
+            proteinsValue.text = if (item.protein == null) "0" else item.protein.toString()
+            fatsValue.text = if (item.fat == null) "0" else item.fat.toString()
+            carbohydratesValue.text =
+                if (item.carbohydrates == null) "0" else item.categories.toString()
             brands.text = item.brands ?: ""
             categories.text = item.categories ?: ""
         }
@@ -52,17 +53,19 @@ class ProductFragment (
         }
 
         binding.add.setOnClickListener {
-            Integer.getInteger(binding.weight.toString())?.let { it1 ->
-                viewModel.saveEating(
-                    id = null,
-                    serverId = item.id,
-                    localId = null ,
-                    // TODO: доделать когда время будет, тильта не будет
-                    meal = sharedViewModel.meal.value?: Meal.Other,
-                    // TODO: Прикрутить бродкаст ресивер потом
-                    weight = it1
-                )
+            var weight : Int = 0
+            if(!binding.weight.text.equals("")) {
+                weight = Integer.parseInt(binding.weight.text.toString())
             }
+            viewModel.saveEating(
+                id = null,
+                serverId = item.id,
+                localId = null,
+                // TODO: доделать когда время будет
+                meal = sharedViewModel.meal.value ?: Meal.Other,
+                // TODO: Прикрутить бродкаст ресивер потом
+                weight = weight
+            )
             (activity as FragmentChanger).changeMainFragment(
                 MainFragment.newInstance()
             )
