@@ -4,8 +4,10 @@ import android.content.Context
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 
-class ImageLoader {
-    fun loadImage(context: Context?, url: String?, view: ImageView){
-        Glide.with(context!!).load(url).into(view)
+class ImageLoader(private val context: Context?) {
+    fun loadImage(url: String?, view: ImageView){
+        if(url != null && context!= null) {
+            Glide.with(context).load(url).into(view)
+        }
     }
 }

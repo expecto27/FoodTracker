@@ -17,3 +17,20 @@ exports.getFoods = async (req, res) => {
         res.status(500).json({ error: 'Ошибка при выполнении запроса' });
     }
 };
+
+exports.getFoodsById = async (req, res) => {
+    try {
+        const { id } = req.query;
+        const query = `
+                SELECT * FROM food WHERE id = :id;
+        `;
+        const foods = await sequelize.query(query, {
+            replacements: { id: `${id}` },
+            type: sequelize.QueryTypes.SELECT
+        });
+        res.json(foods);
+    } catch (error) {
+        console.error('Ошибка при поиске еды:', error);
+        res.status(500).json({ error: 'Ошибка при выполнении запроса' });
+    }
+};

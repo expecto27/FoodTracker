@@ -5,8 +5,13 @@ import com.example.foodtracker.domain.models.ProductFromAPI
 import com.example.foodtracker.domain.repository.ProductApiRepository
 import retrofit2.Call
 
-class ProductApiRepositoryImpl: ProductApiRepository {
+class ProductApiRepositoryImpl : ProductApiRepository {
     override fun getSearchData(query: String?): Call<List<ProductFromAPI>> {
         return Network.getAPI().getData(query)
     }
+
+    override fun findById(id: Int): Call<List<ProductFromAPI>> {
+        return Network.getAPI().getDataById(id)
+    }
+
 }

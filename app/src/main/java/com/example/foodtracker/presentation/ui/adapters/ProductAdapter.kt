@@ -15,20 +15,17 @@ import com.example.foodtracker.presentation.ui.product.ProductFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class ProductAdapter(private val context: Context?) :RecyclerView.Adapter<ProductAdapter.CardHolder>() {
+class ProductAdapter(private val context: Context?, private val imageLoader: ImageLoader) :RecyclerView.Adapter<ProductAdapter.CardHolder>() {
 
     private val cardList = ArrayList<Product>()
-    private val imageLoader: ImageLoader by lazy {
-        ImageLoader()
-    }
 
     class CardHolder(item: View) : RecyclerView.ViewHolder(item) {
         private val binding = ProductItemBinding.bind(item)
 
-        fun bind(card: Product, context: Context?, imageLoader: ImageLoader) {
+        fun bind(card: Product, imageLoader: ImageLoader) {
             runBlocking {
                 launch {
-                    imageLoader.loadImage(context, card.image_small_url, binding.cardImage)
+                    imageLoader.loadImage(card.image_small_url, binding.cardImage)
                 }
             }
             with(binding) {
@@ -47,7 +44,7 @@ class ProductAdapter(private val context: Context?) :RecyclerView.Adapter<Produc
     override fun getItemCount(): Int = cardList.size
 
     override fun onBindViewHolder(holder: CardHolder, position: Int) {
-        holder.bind(cardList[position], this.context, imageLoader)
+        holder.bind(cardList[position], imageLoader)
         holder.itemView.setOnClickListener {
             val navManager = NavigationManager((context as AppCompatActivity).supportFragmentManager)
             navManager.replaceToBackStack(R.id.mainFragment, ProductFragment.newInstance(cardList[position]))

@@ -4,6 +4,7 @@ module.exports = (app) => {
 
     const food = require('../controller/food.js');
     app.get('/api/foods', food.getFoods);
+    app.get('/api/food', food.getFoodsById);
     app.get('/', async (req, res) => {
         res.json({code: '500'})
     } );

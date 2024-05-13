@@ -8,4 +8,7 @@ import retrofit2.http.Query
 interface FoodTrackerAPI {
     @GET("api/foods")
     fun getData(@Query("title") productName: String?) : Call<List<ProductFromAPI>>
+
+    @GET("api/food")
+    fun getDataById(@Query("id") id: Int) : Call<List<ProductFromAPI>>
 }

@@ -11,9 +11,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foodtracker.databinding.FragmentFoodSelectBinding
 import com.example.foodtracker.presentation.FragmentChanger
+import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.adapters.ProductAdapter
 import com.example.foodtracker.presentation.ui.addproduct.AddProductFragment
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 @AndroidEntryPoint
 class FoodSelectFragment : Fragment() {
@@ -37,7 +39,7 @@ class FoodSelectFragment : Fragment() {
                 .getInstance()
                 .newEditable(newData)
         }
-        val productAdapter = ProductAdapter(activity as AppCompatActivity)
+        val productAdapter = ProductAdapter(activity as AppCompatActivity, imageLoader = ImageLoader(context))
 
         viewModel.products.observe(viewLifecycleOwner){ newData ->
             newData.map {

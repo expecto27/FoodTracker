@@ -7,4 +7,5 @@ interface ProductRepository {
     fun save(product: MyProduct)
     fun getAll() : List<MyProduct>
     fun findByName(name: String) : List<MyProduct>
+
 }

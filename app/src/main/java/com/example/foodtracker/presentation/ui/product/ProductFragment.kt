@@ -46,7 +46,7 @@ class ProductFragment(
             categories.text = item.categories ?: ""
         }
 
-        ImageLoader().loadImage(context, item.image_url, binding.imageView)
+        ImageLoader(context).loadImage(item.image_url, binding.imageView)
 
         binding.cancel.setOnClickListener {
             (activity as FragmentChanger).backInBackStack()
