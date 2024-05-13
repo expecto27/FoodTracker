@@ -5,11 +5,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.foodtracker.data.database.converters.DateConverter
 import com.example.foodtracker.data.database.dao.EatDayDao
 import com.example.foodtracker.data.database.dao.ProductDao
+import com.example.foodtracker.data.database.migrations.Migration2
+import com.example.foodtracker.data.database.migrations.Migration3
 import com.example.foodtracker.data.models.EatDay
 import com.example.foodtracker.data.models.Product
 
@@ -30,26 +30,10 @@ abstract class AppDataBase : RoomDatabase() {
                     AppDataBase::class.java,
                     "app_database"
                 )
-                    .addMigrations(MIGRATION_1_2)
-                    .addMigrations(MIGRATION_2_3).build()
+                    .addMigrations(Migration2)
+                    .addMigrations(Migration3).build()
                 INSTANCE = instance
                 instance
-            }
-        }
-
-        private val MIGRATION_1_2 = object  : Migration(1, 2) {
-            override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("CREATE TABLE IF NOT EXISTS eat_day (" +
-                        "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        "server_id INTEGER, " +
-                        "local_id INTEGER, " +
-                        "day INTEGER NOT NULL, " +
-                        "meal INTEGER NOT NULL)")
-            }
-        }
-        private val MIGRATION_2_3 = object  : Migration(2, 3) {
-            override fun migrate(db: SupportSQLiteDatabase) {
-                db.execSQL("ALTER TABLE eat_day ADD COLUMN weight INTEGER NOT NULL DEFAULT 0")
             }
         }
     }
