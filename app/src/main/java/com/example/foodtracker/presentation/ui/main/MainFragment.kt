@@ -1,5 +1,6 @@
 package com.example.foodtracker.presentation.ui.main
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -19,6 +20,7 @@ import com.example.foodtracker.presentation.mapper.IntToMeal
 import com.example.foodtracker.presentation.ui.SharedViewModel
 import com.example.foodtracker.presentation.ui.adapters.EatingAdapter
 import com.example.foodtracker.presentation.ui.foodselect.FoodSelectFragment
+import com.example.foodtracker.presentation.ui.models.DailyStat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -34,10 +36,6 @@ class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
-    private val adapter1: EatingAdapter = EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(context))
-    private val adapter2: EatingAdapter = EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(context))
-    private val adapter3: EatingAdapter = EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(context))
-    private val adapter4: EatingAdapter = EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(context))
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -67,6 +65,14 @@ class MainFragment : Fragment() {
             sharedViewModel.setMeal(Meal.Other)
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
+        val adapter1: EatingAdapter =
+            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
+        val adapter2: EatingAdapter =
+            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
+        val adapter3: EatingAdapter =
+            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
+        val adapter4: EatingAdapter =
+            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
 
         binding.rv1.apply {
             adapter = adapter1
@@ -88,15 +94,41 @@ class MainFragment : Fragment() {
         lifecycleScope.launch {
             val res = viewModel.getAllEating()
             val s = res.await()
-            s.map{
-                when(IntToMeal.map(it.meal)){
+            s.map {
+                when (IntToMeal.map(it.meal)) {
                     Meal.Breakfast -> adapter1.addCard(it)
                     Meal.Lunch -> adapter2.addCard(it)
                     Meal.Dinner -> adapter3.addCard(it)
                     Meal.Other -> adapter4.addCard(it)
                 }
             }
+            val data = mutableListOf(
+                adapter1.calculateTotal(),
+                adapter2.calculateTotal(),
+                adapter3.calculateTotal(),
+                adapter4.calculateTotal()
+            )
+            val dailyAllTotal = calculateAllDay(data)
+            binding.energyValue.text = dailyAllTotal.calories.toString()
+
         }
 
+    }
+
+
+    fun calculateAllDay(data: List<DailyStat>): DailyStat {
+        var calories = 0.0
+        var proteins = 0.0
+        var fats = 0.0
+        var carbohydrates = 0.0
+        Log.d("AdapterAnswer", data.size.toString())
+        data.map {
+            Log.d("AdapterAnswer", it.calories.toString())
+            calories += it.calories
+            fats += it.fats
+            proteins+= it.protein
+            carbohydrates += it.carbohydrates
+        }
+        return DailyStat(calories, proteins, fats, carbohydrates)
     }
 }

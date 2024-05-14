@@ -11,6 +11,7 @@ import com.example.foodtracker.domain.models.EatingDomain
 import com.example.foodtracker.domain.models.ProductFromAPI
 import com.example.foodtracker.domain.repository.ProductApiRepository
 import com.example.foodtracker.presentation.ImageLoader
+import com.example.foodtracker.presentation.ui.models.DailyStat
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import retrofit2.Response
@@ -22,6 +23,7 @@ class EatingAdapter(
 ) :
     RecyclerView.Adapter<EatingAdapter.EatingHolder>() {
     private val cardList = ArrayList<EatingDomain>()
+
 
     class EatingHolder(
         item: View,
@@ -37,7 +39,6 @@ class EatingAdapter(
             var productFromAPICall: Response<List<ProductFromAPI>>
             runBlocking(Dispatchers.IO) {
                 productFromAPICall = productApiRepository.findById(card.serverId ?: 0).execute()
-
             }
             var productFromAPI: List<ProductFromAPI>? = null
             if (productFromAPICall.isSuccessful) {
@@ -45,7 +46,6 @@ class EatingAdapter(
             }
             val product = productFromAPI?.get(0)
             with(binding) {
-                imageLoader.loadImage(product?.imageSmallUrl, binding.image)
                 weightValue.text = card.weight.toString()
 
                 if (product?.energyKcal100g != null) {
@@ -69,6 +69,8 @@ class EatingAdapter(
                         String.format(fats.multiply(cf).toString())
                 }
                 title.text = product?.productName
+                //imageLoader.loadImage(product?.imageSmallUrl, binding.image)
+                //Todo: фото продуктов на главной выглядит убого
             }
         }
     }
@@ -92,4 +94,46 @@ class EatingAdapter(
         cardList.add(card)
         notifyDataSetChanged()
     }
+
+    fun calculateTotal(): DailyStat {
+        var totalEnergy = 0.0
+        var totalProteins = 0.0
+        var totalCarbohydrates = 0.0
+        var totalFats = 0.0
+
+        cardList.forEach { card ->
+            val weight = card.weight.toBigDecimal()
+            val cf = weight.divide((100).toBigDecimal())
+
+            var productFromAPICall: Response<List<ProductFromAPI>>
+            runBlocking(Dispatchers.IO) {
+                productFromAPICall = productApiRepository.findById(card.serverId ?: 0).execute()
+            }
+            var productFromAPI: List<ProductFromAPI>? = null
+            if (productFromAPICall.isSuccessful) {
+                productFromAPI = productFromAPICall.body()
+            }
+            val product = productFromAPI?.get(0)
+
+            if (product?.energyKcal100g != null) {
+                val energy = product.energyKcal100g.toBigDecimal()
+                totalEnergy += energy.multiply(cf).toDouble()
+            }
+            if (product?.proteins100g != null) {
+                val protein = product.proteins100g.toBigDecimal()
+                totalProteins += protein.multiply(cf).toDouble()
+            }
+            if (product?.carbohydrates100g != null) {
+                val carbohydrates = product.carbohydrates100g.toBigDecimal()
+                totalCarbohydrates += carbohydrates.multiply(cf).toDouble()
+            }
+            if (product?.fat100g != null) {
+                val fats = product.fat100g.toBigDecimal()
+                totalFats += fats.multiply(cf).toDouble()
+            }
+        }
+
+        return DailyStat(totalEnergy, totalProteins, totalFats, totalCarbohydrates)
+    }
+
 }

@@ -39,7 +39,8 @@ class FoodSelectFragment : Fragment() {
                 .getInstance()
                 .newEditable(newData)
         }
-        val productAdapter = ProductAdapter(activity as AppCompatActivity, imageLoader = ImageLoader(context))
+
+        val productAdapter = ProductAdapter(activity as AppCompatActivity, imageLoader = ImageLoader(requireContext()))
 
         viewModel.products.observe(viewLifecycleOwner){ newData ->
             newData.map {
