@@ -6,6 +6,7 @@ import com.example.foodtracker.data.repository.ProductRepositoryImpl
 import com.example.foodtracker.domain.repository.EatingRepository
 import com.example.foodtracker.domain.repository.UserDataRepository
 import com.example.foodtracker.domain.usecase.CalculateIMT
+import com.example.foodtracker.domain.usecase.GetDailyTarget
 import com.example.foodtracker.domain.usecase.GetEating
 import com.example.foodtracker.domain.usecase.GetImtVerdict
 import com.example.foodtracker.domain.usecase.GetUserData
@@ -18,7 +19,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import javax.inject.Inject
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -68,6 +68,13 @@ class DomainModule{
     @ViewModelScoped
     fun provideGetUserData(userDataRepository: UserDataRepository): GetUserData {
         return GetUserData(userDataRepository)
+    }
+
+
+    @Provides
+    @ViewModelScoped
+    fun provideGetDailyTarget(userDataRepository: UserDataRepository): GetDailyTarget{
+        return GetDailyTarget(userDataRepository)
     }
 
 }

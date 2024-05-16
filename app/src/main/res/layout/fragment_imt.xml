@@ -126,6 +126,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="Вес (кг)"
             app:boxStrokeColor="@color/purple_500"
             app:boxStrokeWidth="2dp">
@@ -146,7 +147,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/_bg__search_ek1_shape"
             android:hint="Рост (см)"
-
+            android:layout_marginTop="10dp"
             app:boxStrokeColor="@color/purple_500"
             app:boxStrokeWidth="2dp">
 
@@ -175,7 +176,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             >
 
             <com.google.android.material.radiobutton.MaterialRadioButton

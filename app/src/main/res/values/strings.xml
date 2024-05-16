@@ -104,4 +104,10 @@
     <string name="age">Возраст</string>
     <string name="targetthree">Я держусь</string>
     <string name="measures">Замеры 🚀</string>
+    <string name="kkal">ккал</string>
+    <string name="zero">0</string>
+    <string name="total">Всего:</string>
+    <string name="goal">Цель:</string>
+    <string name="sto">100</string>
+    <string name="g">г.</string>
 </resources>

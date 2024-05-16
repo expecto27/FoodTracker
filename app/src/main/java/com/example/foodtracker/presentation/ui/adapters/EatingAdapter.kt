@@ -16,6 +16,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import retrofit2.Response
 import java.math.BigDecimal
+import java.math.RoundingMode
 
 class EatingAdapter(
     private val productApiRepository: ProductApiRepository,
@@ -51,24 +52,37 @@ class EatingAdapter(
                 if (product?.energyKcal100g != null) {
                     val energy = product.energyKcal100g.toBigDecimal()
                     energyValue.text =
-                        String.format(energy.multiply(cf).toString())
+                        String.format(
+                            energy.multiply(cf).setScale(2, RoundingMode.HALF_DOWN).toString()
+                        )
                 }
                 if (product?.proteins100g != null) {
                     val protein = product.proteins100g.toBigDecimal()
                     proteinsValue.text =
-                        String.format(protein.multiply(cf).toString())
+                        String.format(
+                            protein.multiply(cf).setScale(2, RoundingMode.HALF_DOWN).toString()
+                        )
                 }
                 if (product?.carbohydrates100g != null) {
                     val carbohydrates = product.carbohydrates100g.toBigDecimal()
                     carbohydratesValue.text =
-                        String.format(carbohydrates.multiply(cf).toString())
+                        String.format(
+                            carbohydrates.multiply(cf).setScale(2, RoundingMode.HALF_DOWN)
+                                .toString()
+                        )
                 }
                 if (product?.fat100g != null) {
                     val fats = product.fat100g.toBigDecimal()
                     fatsValue.text =
-                        String.format(fats.multiply(cf).toString())
+                        String.format(
+                            fats.multiply(cf).setScale(2, RoundingMode.HALF_DOWN).toString()
+                        )
                 }
-                title.text = product?.productName
+                if(product?.productName?.length!! <= 15) {
+                    title.text = product.productName
+                } else{
+                    title.text = product.productName.substring(0, 15)
+                }
                 //imageLoader.loadImage(product?.imageSmallUrl, binding.image)
                 //Todo: фото продуктов на главной выглядит убого
             }

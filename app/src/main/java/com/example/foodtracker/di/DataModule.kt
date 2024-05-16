@@ -23,23 +23,25 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideDataBase(@ApplicationContext context: Context): AppDataBase{
+    fun provideDataBase(@ApplicationContext context: Context): AppDataBase {
         return AppDataBase.getDatabase(context)
     }
+
     @Provides
-    fun provideProductDao(dataBase: AppDataBase) : ProductDao{
+    fun provideProductDao(dataBase: AppDataBase): ProductDao {
         return dataBase.ProductDao()
     }
+
     @Provides
     @Singleton
-    fun provideProductRepository(productDao: ProductDao) : ProductRepository{
+    fun provideProductRepository(productDao: ProductDao): ProductRepository {
         return ProductRepositoryImpl(productDao)
     }
 
 
     @Provides
     @Singleton
-    fun provideEatDayDao(dataBase: AppDataBase) : EatDayDao{
+    fun provideEatDayDao(dataBase: AppDataBase): EatDayDao {
         return dataBase.EatDayDao()
     }
 
@@ -51,7 +53,7 @@ class DataModule {
 
     @Provides
     @Singleton
-    fun provideUserDataRepository(@ApplicationContext context: Context): UserDataRepository{
+    fun provideUserDataRepository(@ApplicationContext context: Context): UserDataRepository {
         return UserDataRepositoryImpl(context)
     }
 }

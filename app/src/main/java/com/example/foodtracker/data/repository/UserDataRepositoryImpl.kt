@@ -15,11 +15,12 @@ class UserDataRepositoryImpl (context: Context) : UserDataRepository {
         with(sharedEditor){
             putString("name", userData.name)
             putInt("age", userData.age)
-              putBoolean("gender", userData.gender)
+            putBoolean("gender", userData.gender)
             putInt("target", TargetConverter.toInt(userData.target))
             putFloat("height", userData.height.value.toFloat())
             putFloat("weight", userData.weight.value.toFloat())
         }
+        sharedEditor.apply()
         return true
     }
 

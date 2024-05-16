@@ -1,5 +1,6 @@
 package com.example.foodtracker.domain.usecase
 
+import android.util.Log
 import com.example.foodtracker.domain.models.DailyTarget
 import com.example.foodtracker.domain.models.Height
 import com.example.foodtracker.domain.models.Target
@@ -23,13 +24,17 @@ class GetDailyTarget(private val userDataRepository: UserDataRepository) {
             }
 
             Target.Lose -> {
-
+                //TODO : дописать
             }
 
             Target.Grow -> {
-
+                //TODO : дописать
             }
         }
+        if(userData.age == 0){
+            dailyCaloriesTemp = 0f
+        }
+        //Log.d(this.javaClass.name, userData.name)
         return DailyTarget(
             dailyCalories = dailyCaloriesTemp,
             dailyProteins = getDailyProtein(userData.weight),

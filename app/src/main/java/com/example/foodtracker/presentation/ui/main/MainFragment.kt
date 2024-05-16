@@ -23,6 +23,7 @@ import com.example.foodtracker.presentation.ui.foodselect.FoodSelectFragment
 import com.example.foodtracker.presentation.ui.models.DailyStat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -108,8 +109,8 @@ class MainFragment : Fragment() {
                 adapter4.calculateTotal()
             )
             val dailyAllTotal = calculateAllDay(data)
-            binding.energyValue.text = dailyAllTotal.calories.toString()
-
+            binding.energyValue.text = dailyAllTotal.calories.roundToInt().toString()
+            binding.target.text = viewModel.getTarget().dailyCalories.roundToInt().toString()
         }
 
     }
