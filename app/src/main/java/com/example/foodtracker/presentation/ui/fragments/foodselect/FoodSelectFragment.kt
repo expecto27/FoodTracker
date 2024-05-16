@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.foodselect
+package com.example.foodtracker.presentation.ui.fragments.foodselect
 
 import android.os.Bundle
 import android.text.Editable
@@ -13,7 +13,7 @@ import com.example.foodtracker.databinding.FragmentFoodSelectBinding
 import com.example.foodtracker.presentation.FragmentChanger
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.adapters.ProductAdapter
-import com.example.foodtracker.presentation.ui.addproduct.AddProductFragment
+import com.example.foodtracker.presentation.ui.fragments.addproduct.AddProductFragment
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.qualifiers.ApplicationContext
 

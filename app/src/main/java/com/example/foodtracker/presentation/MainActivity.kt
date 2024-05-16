@@ -6,8 +6,8 @@ import androidx.fragment.app.Fragment
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.ActivityMainBinding
 import com.example.foodtracker.presentation.ui.imtstat.ImtStatFragment
-import com.example.foodtracker.presentation.ui.main.MainFragment
-import com.example.foodtracker.presentation.ui.myproducts.MyProductFragment
+import com.example.foodtracker.presentation.ui.fragments.main.MainFragment
+import com.example.foodtracker.presentation.ui.fragments.myproducts.MyProductFragment
 import com.example.foodtracker.presentation.ui.navigation.INavigationManager
 import com.example.foodtracker.presentation.ui.navigation.NavigationManager
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.main
+package com.example.foodtracker.presentation.ui.fragments.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +9,7 @@ import com.example.foodtracker.domain.models.DailyTarget
 import com.example.foodtracker.domain.models.EatingDomain
 import com.example.foodtracker.domain.usecase.GetDailyTarget
 import com.example.foodtracker.domain.usecase.GetEating
+import com.example.foodtracker.domain.usecase.GetUserData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +20,8 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private var savedStateHandle: SavedStateHandle,
     private var getEating: GetEating,
-    private var getDailyTarget: GetDailyTarget
+    private var getDailyTarget: GetDailyTarget,
+    private var getUserData: GetUserData
 ) : ViewModel() {
 
     private val _protein: MutableLiveData<Float> by lazy {
@@ -37,5 +39,9 @@ class MainViewModel @Inject constructor(
 
     fun getTarget(): DailyTarget {
         return getDailyTarget.execute()
+    }
+
+    fun getUserName() : String {
+        return getUserData.execute().name
     }
 }

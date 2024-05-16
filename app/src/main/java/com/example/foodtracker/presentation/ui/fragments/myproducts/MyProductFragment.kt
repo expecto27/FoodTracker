@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.myproducts
+package com.example.foodtracker.presentation.ui.fragments.myproducts
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

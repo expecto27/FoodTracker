@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.main
+package com.example.foodtracker.presentation.ui.fragments.main
 
 import android.content.Context
 import android.os.Bundle
@@ -11,15 +11,17 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodtracker.R
 import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.databinding.FragmentMainBinding
 import com.example.foodtracker.domain.models.Meal
+import com.example.foodtracker.domain.usecase.GetUserData
 import com.example.foodtracker.presentation.FragmentChanger
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.mapper.IntToMeal
 import com.example.foodtracker.presentation.ui.SharedViewModel
 import com.example.foodtracker.presentation.ui.adapters.EatingAdapter
-import com.example.foodtracker.presentation.ui.foodselect.FoodSelectFragment
+import com.example.foodtracker.presentation.ui.fragments.foodselect.FoodSelectFragment
 import com.example.foodtracker.presentation.ui.models.DailyStat
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -111,6 +113,7 @@ class MainFragment : Fragment() {
             val dailyAllTotal = calculateAllDay(data)
             binding.energyValue.text = dailyAllTotal.calories.roundToInt().toString()
             binding.target.text = viewModel.getTarget().dailyCalories.roundToInt().toString()
+            binding.statText.text = getString(R.string.today).plus(" ${viewModel.getUserName()}")
         }
 
     }

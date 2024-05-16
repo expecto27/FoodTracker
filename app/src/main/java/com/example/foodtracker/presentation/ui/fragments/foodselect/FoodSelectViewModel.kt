@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.foodselect
+package com.example.foodtracker.presentation.ui.fragments.foodselect
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

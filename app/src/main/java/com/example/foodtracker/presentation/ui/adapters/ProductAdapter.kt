@@ -11,7 +11,7 @@ import com.example.foodtracker.databinding.ProductItemBinding
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.models.Product
 import com.example.foodtracker.presentation.ui.navigation.NavigationManager
-import com.example.foodtracker.presentation.ui.product.ProductFragment
+import com.example.foodtracker.presentation.ui.fragments.product.ProductFragment
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 

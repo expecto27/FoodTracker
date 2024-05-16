@@ -3,7 +3,7 @@ package com.example.foodtracker.presentation.ui.navigation
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 
-class NavigationManager(var fragmentManager: FragmentManager) : INavigationManager{
+class NavigationManager(var fragmentManager: FragmentManager) : INavigationManager {
 
     override fun add(container: Int, fragment: Fragment){
         fragmentManager

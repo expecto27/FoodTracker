@@ -88,7 +88,7 @@
     <string name="brands">brands</string>
     <string name="categories">categories</string>
     <string name="gr">г.</string>
-    <string name="today">Сегодня 😼</string>
+    <string name="today">Привет 😼</string>
     <string name="IMT">ИМТ</string>
     <string name="data">Данные</string>
     <string name="update">Обновить</string>
@@ -110,4 +110,7 @@
     <string name="goal">Цель:</string>
     <string name="sto">100</string>
     <string name="g">г.</string>
+    <string name="addProduct">Добавить продукт</string>
+    <string name="pedometr">Шагомер 🐾</string>
+    <string name="step">step</string>
 </resources>

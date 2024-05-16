@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.addproduct
+package com.example.foodtracker.presentation.ui.fragments.addproduct
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.foodtracker.databinding.FragmentAddProductBinding
 import com.example.foodtracker.presentation.FragmentChanger
-import com.example.foodtracker.presentation.ui.models.Product
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -25,7 +24,7 @@ class AddProductFragment  : Fragment() {
             (activity as FragmentChanger).backInBackStack()
         }
         binding.add.setOnClickListener {
-            val name = binding.titleProduct.text.toString()
+            val name = binding.title.text.toString()
             val calories = binding.calories.text.toString().toFloat()
             val fat = binding.fat.text.toString().toFloat()
             val protein = binding.protein.text.toString().toFloat()

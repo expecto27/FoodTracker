@@ -78,11 +78,7 @@ class EatingAdapter(
                             fats.multiply(cf).setScale(2, RoundingMode.HALF_DOWN).toString()
                         )
                 }
-                if(product?.productName?.length!! <= 15) {
-                    title.text = product.productName
-                } else{
-                    title.text = product.productName.substring(0, 15)
-                }
+                title.text = product?.productName
                 //imageLoader.loadImage(product?.imageSmallUrl, binding.image)
                 //Todo: фото продуктов на главной выглядит убого
             }

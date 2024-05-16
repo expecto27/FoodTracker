@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.product
+package com.example.foodtracker.presentation.ui.fragments.product
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel

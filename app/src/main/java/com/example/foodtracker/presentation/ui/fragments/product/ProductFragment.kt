@@ -1,4 +1,4 @@
-package com.example.foodtracker.presentation.ui.product
+package com.example.foodtracker.presentation.ui.fragments.product
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import com.example.foodtracker.domain.models.Meal
 import com.example.foodtracker.presentation.FragmentChanger
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.SharedViewModel
-import com.example.foodtracker.presentation.ui.main.MainFragment
+import com.example.foodtracker.presentation.ui.fragments.main.MainFragment
 import com.example.foodtracker.presentation.ui.models.Product
 import dagger.hilt.android.AndroidEntryPoint
 
