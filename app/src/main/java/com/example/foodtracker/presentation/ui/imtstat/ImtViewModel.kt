@@ -7,9 +7,13 @@ import com.example.foodtracker.R
 import com.example.foodtracker.domain.models.Height
 import com.example.foodtracker.domain.models.ImtVerdict
 import com.example.foodtracker.domain.models.IndexIMT
+import com.example.foodtracker.domain.models.Target
+import com.example.foodtracker.domain.models.UserData
 import com.example.foodtracker.domain.models.Weight
 import com.example.foodtracker.domain.usecase.CalculateIMT
 import com.example.foodtracker.domain.usecase.GetImtVerdict
+import com.example.foodtracker.domain.usecase.GetUserData
+import com.example.foodtracker.domain.usecase.SaveUserData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -18,7 +22,9 @@ import javax.inject.Inject
 class ImtViewModel @Inject constructor(
     private var savedStateHandle: SavedStateHandle,
     private var calculateIMT: CalculateIMT,
-    private var getImtVerdict: GetImtVerdict
+    private var getImtVerdict: GetImtVerdict,
+    private var saveUserData: SaveUserData,
+    private var getUserData: GetUserData,
 ) : ViewModel() {
     fun getSnackBarVerdict(context: Context, weight: Double, height: Double): String {
 
@@ -38,5 +44,25 @@ class ImtViewModel @Inject constructor(
         }
 
         return "Ваш ИМТ: ${imt.value} " + context.getString(resId)
+    }
+
+    fun saveData(
+        _name: String,
+        _age: Int,
+        _height: Double,
+        _weight: Double,
+        _target: Target,
+        _gender: Boolean
+    ) {
+        saveUserData.execute(
+            UserData(
+                name = _name,
+                age = _age,
+                height = Height(_height),
+                weight = Weight(_weight),
+                target = _target,
+                gender = _gender
+            )
+        )
     }
 }

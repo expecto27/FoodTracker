@@ -26,7 +26,7 @@ class MainViewModel @Inject constructor(
         get() = _protein
 
 
-    suspend fun getAllEating(): Deferred<List<EatingDomain>> {
+    fun getAllEating(): Deferred<List<EatingDomain>> {
         return viewModelScope.async(Dispatchers.IO) {
             getEating.getCurrentDate()
         }

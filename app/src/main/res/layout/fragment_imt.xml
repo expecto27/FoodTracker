@@ -1,94 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/imt_hello"
+        android:id="@+id/stat_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/imt_hello"
+        android:text="@string/data_temp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/stat"
+        app:layout_constraintStart_toStartOf="@+id/stat" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spacer2"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/_bg__search_ek1_shape"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/gender"
+            android:orientation="horizontal"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp">
+
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/stat"
+                app:layout_constraintStart_toStartOf="@+id/stat" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioButtonMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/man" />
+
+                <com.google.android.material.radiobutton.MaterialRadioButton
+                    android:id="@+id/radioButtonFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/woman" />
+
+            </RadioGroup>
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/imt_height"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="@string/imt_height"
-        android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/imt_edit_height"
-        app:layout_constraintEnd_toStartOf="@id/imt_edit_height"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imt_hello" />
-
-    <EditText
-        android:id="@+id/imt_edit_height"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
-        android:autofillHints="@string/imt_height"
-        android:hint="@string/sm"
-
-        android:inputType="numberDecimal"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toTopOf="@+id/imt_weight"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imt_height"
-        app:layout_constraintTop_toBottomOf="@id/imt_hello" />
-
-    <TextView
-        android:id="@+id/imt_weight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:text="@string/imt_weight"
-        android:textSize="25sp"
-        app:layout_constraintBaseline_toBaselineOf="@id/imt_edit_weight"
-        app:layout_constraintEnd_toStartOf="@+id/imt_edit_weight"
-        app:layout_constraintStart_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imt_height" />
-
-    <EditText
-        android:id="@+id/imt_edit_weight"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:autofillHints="@string/imt_weight"
-        android:hint="@string/kg"
-        android:inputType="numberDecimal"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imt_weight"
-        app:layout_constraintTop_toBottomOf="@+id/imt_edit_height" />
-
-    <Button
-        android:id="@+id/calculate"
-        style="@style/button"
+        android:id="@+id/body_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#0000FF"
+        android:layout_marginTop="30dp"
+        android:text="@string/measures"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/stat"
+        app:layout_constraintStart_toStartOf="@+id/stat" />
 
-        android:text="@string/imt_calc"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imt_edit_weight"
-        app:layout_constraintVertical_bias="0.608" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/spacer2"
+        android:orientation="vertical"
+        android:padding="15dp">
 
-    <View
-        android:id="@+id/view"
-        android:background="@color/purple_500"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutAge"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/age"
+
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/_bg__search_ek1_shape"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutWeight"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Вес (кг)"
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/weight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/_bg__search_ek1_shape"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutHeight"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/_bg__search_ek1_shape"
+            android:hint="Рост (см)"
+
+            app:boxStrokeColor="@color/purple_500"
+            app:boxStrokeWidth="2dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/height"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/_bg__search_ek1_shape"
+                android:inputType="numberDecimal" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/target"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/stat"
+            app:layout_constraintStart_toStartOf="@+id/stat" />
+
+
+        <RadioGroup
+            android:id="@+id/radioGroupGoal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+
+            >
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButtonLoseWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/target_ine" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButtonGrowWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/target_two"
+                android:textStyle="bold" />
+
+            <com.google.android.material.radiobutton.MaterialRadioButton
+                android:id="@+id/radioButtonStayWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/targetthree" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:elevation="-1dp"
-        app:layout_constraintStart_toEndOf="@+id/imt_height"
-        app:layout_constraintTop_toBottomOf="@+id/imt_hello" />
+        android:layout_marginTop="30dp"
+        android:text="@string/submit"
+        android:textColor="@color/white"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="18sp"
+        app:backgroundTint="@color/purple_500"
+        app:cornerRadius="28dp"
+        app:rippleColor="@color/purple_200" />
+
+</LinearLayout>

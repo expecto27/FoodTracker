@@ -36,7 +36,6 @@ class MainFragment : Fragment() {
     private val viewModel: MainViewModel by viewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -121,12 +120,11 @@ class MainFragment : Fragment() {
         var proteins = 0.0
         var fats = 0.0
         var carbohydrates = 0.0
-        Log.d("AdapterAnswer", data.size.toString())
         data.map {
             Log.d("AdapterAnswer", it.calories.toString())
             calories += it.calories
             fats += it.fats
-            proteins+= it.protein
+            proteins += it.protein
             carbohydrates += it.carbohydrates
         }
         return DailyStat(calories, proteins, fats, carbohydrates)

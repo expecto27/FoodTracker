@@ -90,4 +90,18 @@
     <string name="gr">г.</string>
     <string name="today">Сегодня 😼</string>
     <string name="IMT">ИМТ</string>
+    <string name="data">Данные</string>
+    <string name="update">Обновить</string>
+    <string name="man">Мужской♂️</string>
+    <string name="woman">Женский♀️</string>
+    <string name="submit">Отправить🎗️</string>
+    <string name="data_temp">Мои Данные😼</string>
+    <string name="gender">Пол</string>
+    <string name="name">Имя</string>
+    <string name="target">Цель🎯</string>
+    <string name="target_ine">Я худею</string>
+    <string name="target_two">Я толстею</string>
+    <string name="age">Возраст</string>
+    <string name="targetthree">Я держусь</string>
+    <string name="measures">Замеры 🚀</string>
 </resources>

@@ -6,8 +6,10 @@ import com.example.foodtracker.data.database.dao.EatDayDao
 import com.example.foodtracker.data.database.dao.ProductDao
 import com.example.foodtracker.data.repository.EatingRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
+import com.example.foodtracker.data.repository.UserDataRepositoryImpl
 import com.example.foodtracker.domain.repository.EatingRepository
 import com.example.foodtracker.domain.repository.ProductRepository
+import com.example.foodtracker.domain.repository.UserDataRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -45,5 +47,11 @@ class DataModule {
     @Singleton
     fun provideEatingRepository(eatDayDao: EatDayDao): EatingRepository {
         return EatingRepositoryImpl(eatDayDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserDataRepository(@ApplicationContext context: Context): UserDataRepository{
+        return UserDataRepositoryImpl(context)
     }
 }

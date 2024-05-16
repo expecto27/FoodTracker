@@ -7,10 +7,12 @@
     <item
         android:id="@+id/imtFragment"
         android:icon="@drawable/statistic"
-        android:title="@string/IMT" />
+        android:title="@string/data" />
     <item
         android:id="@+id/myProductFragment"
         android:icon="@drawable/lunch"
         android:title="@string/prod"
         />
 </menu>
+
+

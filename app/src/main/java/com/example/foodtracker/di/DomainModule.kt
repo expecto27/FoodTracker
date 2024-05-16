@@ -4,11 +4,14 @@ import com.example.foodtracker.data.database.dao.ProductDao
 import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
 import com.example.foodtracker.domain.repository.EatingRepository
+import com.example.foodtracker.domain.repository.UserDataRepository
 import com.example.foodtracker.domain.usecase.CalculateIMT
 import com.example.foodtracker.domain.usecase.GetEating
 import com.example.foodtracker.domain.usecase.GetImtVerdict
+import com.example.foodtracker.domain.usecase.GetUserData
 import com.example.foodtracker.domain.usecase.SaveEating
 import com.example.foodtracker.domain.usecase.SaveMyProduct
+import com.example.foodtracker.domain.usecase.SaveUserData
 import com.example.foodtracker.domain.usecase.SearchProducts
 import dagger.Module
 import dagger.Provides
@@ -54,6 +57,17 @@ class DomainModule{
     @ViewModelScoped
     fun provideGetEating(eatingRepository: EatingRepository): GetEating{
         return GetEating(eatingRepository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideSaveUserData(userDataRepository: UserDataRepository): SaveUserData{
+        return SaveUserData(userDataRepository)
+    }
+    @Provides
+    @ViewModelScoped
+    fun provideGetUserData(userDataRepository: UserDataRepository): GetUserData {
+        return GetUserData(userDataRepository)
     }
 
 }
