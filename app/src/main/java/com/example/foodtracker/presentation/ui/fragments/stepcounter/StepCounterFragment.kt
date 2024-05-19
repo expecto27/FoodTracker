@@ -1,32 +1,41 @@
 package com.example.foodtracker.presentation.ui.fragments.stepcounter
 
-import androidx.lifecycle.ViewModelProvider
+import android.app.Application
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import com.example.foodtracker.App
 import com.example.foodtracker.R
+import com.example.foodtracker.databinding.FragmentStepCounterBinding
 
 class StepCounterFragment : Fragment() {
 
     companion object {
+        @JvmStatic
         fun newInstance() = StepCounterFragment()
     }
 
-    private lateinit var viewModel: StepCounterViewModel
+    private val viewModel: StepCounterViewModel by viewModels {
+        StepCounterViewModelFactory(requireActivity().application)
+    }
+    private lateinit var binding: FragmentStepCounterBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_step_counter, container, false)
+    ): View {
+        binding = FragmentStepCounterBinding.inflate(inflater, container, false)
+        viewModel.stepCount.observe(viewLifecycleOwner, Observer {
+            if (it == -1) {
+                binding.stepsCount.text = getString(R.string.step_sensor_error)
+            } else {
+                binding.stepsCount.text = it.toString()
+            }
+        })
+        return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(StepCounterViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

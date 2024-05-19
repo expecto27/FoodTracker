@@ -51,22 +51,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.foods1.setOnClickListener {
-            sharedViewModel.setMeal(Meal.Breakfast)
-            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
-        }
-        binding.foods2.setOnClickListener {
-            sharedViewModel.setMeal(Meal.Lunch)
-            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
-        }
-        binding.foods3.setOnClickListener {
-            sharedViewModel.setMeal(Meal.Dinner)
-            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
-        }
-        binding.foods4.setOnClickListener {
-            sharedViewModel.setMeal(Meal.Other)
-            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
-        }
+
         val adapter1: EatingAdapter =
             EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
         val adapter2: EatingAdapter =
@@ -76,21 +61,38 @@ class MainFragment : Fragment() {
         val adapter4: EatingAdapter =
             EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
 
-        binding.rv1.apply {
+        binding.foods1.apply {
             adapter = adapter1
             layoutManager = LinearLayoutManager(context)
         }
-        binding.rv2.apply {
+        binding.foods2.apply {
             adapter = adapter2
             layoutManager = LinearLayoutManager(context)
         }
-        binding.rv3.apply {
+        binding.foods3.apply {
             adapter = adapter3
             layoutManager = LinearLayoutManager(context)
         }
-        binding.rv4.apply {
+        binding.foods4.apply {
             adapter = adapter4
             layoutManager = LinearLayoutManager(context)
+        }
+
+        binding.add1.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Breakfast)
+            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
+        }
+        binding.add2.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Lunch)
+            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
+        }
+        binding.add3.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Dinner)
+            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
+        }
+        binding.add4.setOnClickListener {
+            sharedViewModel.setMeal(Meal.Other)
+            (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
 
         lifecycleScope.launch {

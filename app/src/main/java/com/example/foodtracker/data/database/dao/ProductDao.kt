@@ -1,6 +1,7 @@
 package com.example.foodtracker.data.database.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import com.example.foodtracker.data.models.Product
@@ -15,4 +16,7 @@ interface ProductDao {
 
     @Insert
     fun save(product: Product)
+
+    @Delete
+    fun delete(product: Product)
 }

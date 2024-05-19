@@ -9,6 +9,15 @@
         android:icon="@drawable/statistic"
         android:title="@string/data" />
     <item
+        android:id="@+id/stepCountFragment"
+        android:icon="@drawable/step"
+        android:title="@string/pedometer" />
+    <item
+        android:id="@+id/waterFragment"
+        android:icon="@drawable/water"
+        android:title="@string/water"
+        />
+    <item
         android:id="@+id/myProductFragment"
         android:icon="@drawable/lunch"
         android:title="@string/prod"

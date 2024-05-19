@@ -18,6 +18,21 @@
     <string name="breakfast">Завтрак</string>
     <string name="lunch">Обед🥗</string>
     <string name="dinner">Ужин🥘</string>
+    <string-array name="water_amounts">
+        <item>50 мл</item>
+        <item>100 мл</item>
+        <item>150 мл</item>
+        <item>200 мл</item>
+        <item>250 мл</item>
+        <item>350 мл</item>
+        <item>400 мл</item>
+        <item>500 мл</item>
+        <item>600 мл</item>
+        <item>700 мл</item>
+        <item>800 мл</item>
+        <item>900 мл</item>
+        <item>1000 мл</item>
+    </string-array>
     <string name="addition">Добавить приём пищи</string>
     <string name="top_view_discriprion">topView</string>
     <string name="fast_food">Перекус🍪</string>
@@ -113,4 +128,9 @@
     <string name="addProduct">Добавить продукт</string>
     <string name="pedometr">Шагомер 🐾</string>
     <string name="step">step</string>
+    <string name="pedometer">Шагомер</string>
+    <string name="step_sensor_error">Сенсор шагомер недоступен!</string>
+    <string name="water">Вода💦</string>
+    <string name="fifeh">50</string>
+    <string name="today_target">Цель на сегодня:</string>
 </resources>

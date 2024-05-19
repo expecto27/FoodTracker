@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foodtracker.R
 import com.example.foodtracker.databinding.EatingItemBinding
@@ -24,8 +25,11 @@ class EatingAdapter(
 ) :
     RecyclerView.Adapter<EatingAdapter.EatingHolder>() {
     private val cardList = ArrayList<EatingDomain>()
+    private var onItemClickListener: AdapterView.OnItemClickListener? = null
 
-
+    fun setOnItemClickListener(listener: AdapterView.OnItemClickListener) {
+        onItemClickListener = listener
+    }
     class EatingHolder(
         item: View,
         private val productApiRepository: ProductApiRepository,
@@ -80,7 +84,6 @@ class EatingAdapter(
                 }
                 title.text = product?.productName
                 //imageLoader.loadImage(product?.imageSmallUrl, binding.image)
-                //Todo: фото продуктов на главной выглядит убого
             }
         }
     }
@@ -89,11 +92,17 @@ class EatingAdapter(
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.eating_item, parent, false)
+        view.setOnClickListener {
+            onItemClickListener?.onItemClick(parent as AdapterView<*>?, view, cardList.size,
+                cardList.size.toLong()
+            )
+        }
         return EatingAdapter.EatingHolder(view, productApiRepository, imageLoader)
     }
 
     override fun onBindViewHolder(holder: EatingHolder, position: Int) {
         holder.bind(cardList[position])
+
     }
 
     override fun getItemCount(): Int {

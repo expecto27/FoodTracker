@@ -2,11 +2,14 @@ package com.example.foodtracker.di
 
 import android.content.Context
 import com.example.foodtracker.data.database.AppDataBase
+import com.example.foodtracker.data.database.dao.DrinkStatDao
 import com.example.foodtracker.data.database.dao.EatDayDao
 import com.example.foodtracker.data.database.dao.ProductDao
+import com.example.foodtracker.data.repository.DrinkRepositoryImpl
 import com.example.foodtracker.data.repository.EatingRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
 import com.example.foodtracker.data.repository.UserDataRepositoryImpl
+import com.example.foodtracker.domain.repository.DrinkRepository
 import com.example.foodtracker.domain.repository.EatingRepository
 import com.example.foodtracker.domain.repository.ProductRepository
 import com.example.foodtracker.domain.repository.UserDataRepository
@@ -55,5 +58,11 @@ class DataModule {
     @Singleton
     fun provideUserDataRepository(@ApplicationContext context: Context): UserDataRepository {
         return UserDataRepositoryImpl(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDrinkRepository(drinkStatDao: DrinkStatDao): DrinkRepository {
+        return DrinkRepositoryImpl(drinkStatDao)
     }
 }

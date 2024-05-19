@@ -15,6 +15,16 @@ class EatingRepositoryImpl(private val eatDayDao: EatDayDao) : EatingRepository{
         }
     }
 
+    override fun delete(eating: EatingDomain) {
+        runBlocking {
+            eatDayDao.delete(
+                EatingDomainToEatDayMap.map(
+                    eating
+                )
+            )
+        }
+    }
+
     override fun getWithCurrentDate() : List<EatingDomain>{
         val res = mutableListOf<EatingDomain>()
         runBlocking {
@@ -25,4 +35,5 @@ class EatingRepositoryImpl(private val eatDayDao: EatDayDao) : EatingRepository{
         //Log.d("DataBaseAnswer", res.size.toString())
         return res
     }
+
 }

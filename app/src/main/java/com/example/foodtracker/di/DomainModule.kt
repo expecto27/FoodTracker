@@ -3,10 +3,13 @@ package com.example.foodtracker.di
 import com.example.foodtracker.data.database.dao.ProductDao
 import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
+import com.example.foodtracker.domain.repository.DrinkRepository
 import com.example.foodtracker.domain.repository.EatingRepository
 import com.example.foodtracker.domain.repository.UserDataRepository
 import com.example.foodtracker.domain.usecase.CalculateIMT
+import com.example.foodtracker.domain.usecase.DeleteEating
 import com.example.foodtracker.domain.usecase.GetDailyTarget
+import com.example.foodtracker.domain.usecase.GetDrinkStat
 import com.example.foodtracker.domain.usecase.GetEating
 import com.example.foodtracker.domain.usecase.GetImtVerdict
 import com.example.foodtracker.domain.usecase.GetUserData
@@ -58,6 +61,11 @@ class DomainModule{
     fun provideGetEating(eatingRepository: EatingRepository): GetEating{
         return GetEating(eatingRepository)
     }
+    @Provides
+    @ViewModelScoped
+    fun provideDeleteEating(eatingRepository: EatingRepository): DeleteEating {
+        return DeleteEating(eatingRepository)
+    }
 
     @Provides
     @ViewModelScoped
@@ -77,4 +85,9 @@ class DomainModule{
         return GetDailyTarget(userDataRepository)
     }
 
+    @Provides
+    @ViewModelScoped
+    fun provideGetDrinkStat(drinkRepository: DrinkRepository): GetDrinkStat{
+        return GetDrinkStat(drinkRepository)
+    }
 }

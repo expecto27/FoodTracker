@@ -19,3 +19,11 @@ object Migration3 : Migration(2, 3) {
     }
 }
 
+object Migrations4 : Migration(3, 4){
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS drink (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "ml INTEGER NOT NULL," +
+                "day INTEGER NOT NULL)")
+    }
+}
