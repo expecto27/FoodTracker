@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.foodtracker.domain.models.DailyTarget
 import com.example.foodtracker.domain.models.EatingDomain
+import com.example.foodtracker.domain.usecase.DeleteEating
 import com.example.foodtracker.domain.usecase.GetDailyTarget
 import com.example.foodtracker.domain.usecase.GetEating
 import com.example.foodtracker.domain.usecase.GetUserData
@@ -21,7 +22,8 @@ class MainViewModel @Inject constructor(
     private var savedStateHandle: SavedStateHandle,
     private var getEating: GetEating,
     private var getDailyTarget: GetDailyTarget,
-    private var getUserData: GetUserData
+    private var getUserData: GetUserData,
+    private val deleteEating: DeleteEating
 ) : ViewModel() {
 
     private val _protein: MutableLiveData<Float> by lazy {
@@ -36,7 +38,9 @@ class MainViewModel @Inject constructor(
             getEating.getCurrentDate()
         }
     }
-
+    fun getDeleteEating(): DeleteEating{
+        return deleteEating
+    }
     fun getTarget(): DailyTarget {
         return getDailyTarget.execute()
     }

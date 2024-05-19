@@ -11,6 +11,7 @@ import com.example.foodtracker.databinding.EatingItemBinding
 import com.example.foodtracker.domain.models.EatingDomain
 import com.example.foodtracker.domain.models.ProductFromAPI
 import com.example.foodtracker.domain.repository.ProductApiRepository
+import com.example.foodtracker.domain.usecase.DeleteEating
 import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.models.DailyStat
 import kotlinx.coroutines.Dispatchers
@@ -21,19 +22,17 @@ import java.math.RoundingMode
 
 class EatingAdapter(
     private val productApiRepository: ProductApiRepository,
-    private val imageLoader: ImageLoader
+    private val deleteEating: DeleteEating
 ) :
     RecyclerView.Adapter<EatingAdapter.EatingHolder>() {
     private val cardList = ArrayList<EatingDomain>()
-    private var onItemClickListener: AdapterView.OnItemClickListener? = null
 
-    fun setOnItemClickListener(listener: AdapterView.OnItemClickListener) {
-        onItemClickListener = listener
-    }
+
     class EatingHolder(
         item: View,
+        private val adapter: EatingAdapter,
         private val productApiRepository: ProductApiRepository,
-        private val imageLoader: ImageLoader
+        private val deleteEating: DeleteEating
     ) :
         RecyclerView.ViewHolder(item) {
         private val binding = EatingItemBinding.bind(item)
@@ -52,6 +51,11 @@ class EatingAdapter(
             val product = productFromAPI?.get(0)
             with(binding) {
                 weightValue.text = card.weight.toString()
+
+                delete.setOnClickListener {
+                    deleteEating.execute(card)
+                    adapter.deleteEating(card)
+                }
 
                 if (product?.energyKcal100g != null) {
                     val energy = product.energyKcal100g.toBigDecimal()
@@ -92,12 +96,7 @@ class EatingAdapter(
         val view = LayoutInflater
             .from(parent.context)
             .inflate(R.layout.eating_item, parent, false)
-        view.setOnClickListener {
-            onItemClickListener?.onItemClick(parent as AdapterView<*>?, view, cardList.size,
-                cardList.size.toLong()
-            )
-        }
-        return EatingAdapter.EatingHolder(view, productApiRepository, imageLoader)
+        return EatingAdapter.EatingHolder(view, this, productApiRepository, deleteEating)
     }
 
     override fun onBindViewHolder(holder: EatingHolder, position: Int) {
@@ -109,6 +108,10 @@ class EatingAdapter(
         return cardList.size
     }
 
+    fun deleteEating(eating : EatingDomain){
+        cardList.remove(eating)
+        notifyDataSetChanged()
+    }
     fun addCard(card: EatingDomain) {
         cardList.add(card)
         notifyDataSetChanged()

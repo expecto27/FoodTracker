@@ -53,13 +53,13 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter1: EatingAdapter =
-            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
+            EatingAdapter(ProductApiRepositoryImpl(), viewModel.getDeleteEating())
         val adapter2: EatingAdapter =
-            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
+            EatingAdapter(ProductApiRepositoryImpl(), viewModel.getDeleteEating())
         val adapter3: EatingAdapter =
-            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
+            EatingAdapter(ProductApiRepositoryImpl(), viewModel.getDeleteEating())
         val adapter4: EatingAdapter =
-            EatingAdapter(ProductApiRepositoryImpl(), imageLoader = ImageLoader(requireContext()))
+            EatingAdapter(ProductApiRepositoryImpl(), viewModel.getDeleteEating())
 
         binding.foods1.apply {
             adapter = adapter1
@@ -94,6 +94,7 @@ class MainFragment : Fragment() {
             sharedViewModel.setMeal(Meal.Other)
             (activity as FragmentChanger).changeMainFragment(FoodSelectFragment.newInstance())
         }
+
 
         lifecycleScope.launch {
             val res = viewModel.getAllEating()
