@@ -29,7 +29,7 @@ class EatingRepositoryImpl(private val eatDayDao: EatDayDao) : EatingRepository{
     override fun getWithCurrentDate() : List<EatingDomain>{
         val res = mutableListOf<EatingDomain>()
         runBlocking(Dispatchers.IO) {
-            eatDayDao.getAll( ).map {
+            eatDayDao.getAll().map {
                 res.add(EatDayToEatingDomainMap.map(it))
             }
         }

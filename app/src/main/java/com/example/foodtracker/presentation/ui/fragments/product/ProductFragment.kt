@@ -61,7 +61,6 @@ class ProductFragment(
                 id = null,
                 serverId = item.id,
                 localId = null,
-                // TODO: доделать когда время будет
                 meal = sharedViewModel.meal.value ?: Meal.Other,
                 // TODO: Прикрутить бродкаст ресивер потом
                 weight = weight

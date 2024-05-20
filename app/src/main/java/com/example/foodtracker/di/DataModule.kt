@@ -33,6 +33,7 @@ class DataModule {
     }
 
     @Provides
+    @Singleton
     fun provideProductDao(dataBase: AppDataBase): ProductDao {
         return dataBase.ProductDao()
     }
@@ -50,6 +51,11 @@ class DataModule {
         return dataBase.EatDayDao()
     }
 
+    @Provides
+    @Singleton
+    fun provideDrinkStatDao(dataBase: AppDataBase): DrinkStatDao {
+        return dataBase.DrinkStatDao()
+    }
     @Provides
     @Singleton
     fun provideEatingRepository(eatDayDao: EatDayDao): EatingRepository {

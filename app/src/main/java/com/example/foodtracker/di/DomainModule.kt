@@ -5,16 +5,16 @@ import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
 import com.example.foodtracker.domain.repository.DrinkRepository
 import com.example.foodtracker.domain.repository.EatingRepository
-import com.example.foodtracker.domain.repository.ProductApiRepository
 import com.example.foodtracker.domain.repository.UserDataRepository
 import com.example.foodtracker.domain.usecase.CalculateIMT
-import com.example.foodtracker.domain.usecase.CheckServerConnection
+import com.example.foodtracker.domain.usecase.DeleteDrink
 import com.example.foodtracker.domain.usecase.DeleteEating
 import com.example.foodtracker.domain.usecase.GetDailyTarget
 import com.example.foodtracker.domain.usecase.GetDrinkStat
 import com.example.foodtracker.domain.usecase.GetEating
 import com.example.foodtracker.domain.usecase.GetImtVerdict
 import com.example.foodtracker.domain.usecase.GetUserData
+import com.example.foodtracker.domain.usecase.SaveDrink
 import com.example.foodtracker.domain.usecase.SaveEating
 import com.example.foodtracker.domain.usecase.SaveMyProduct
 import com.example.foodtracker.domain.usecase.SaveUserData
@@ -23,7 +23,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.scopes.ActivityScoped
 import dagger.hilt.android.scopes.ViewModelScoped
 
 @Module
@@ -96,4 +95,14 @@ class DomainModule {
         return GetDrinkStat(drinkRepository)
     }
 
+    @Provides
+    @ViewModelScoped
+    fun provideSaveDrink(drinkRepository: DrinkRepository): SaveDrink {
+        return SaveDrink(drinkRepository)
+    }
+    @Provides
+    @ViewModelScoped
+    fun provideDeleteDrink(drinkRepository: DrinkRepository): DeleteDrink {
+        return DeleteDrink(drinkRepository)
+    }
 }

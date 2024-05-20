@@ -1,8 +1,6 @@
 package com.example.foodtracker.presentation.ui.fragments.main
 
-import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +13,7 @@ import com.example.foodtracker.R
 import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.databinding.FragmentMainBinding
 import com.example.foodtracker.domain.models.Meal
-import com.example.foodtracker.domain.usecase.GetUserData
 import com.example.foodtracker.presentation.FragmentChanger
-import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.mapper.IntToMeal
 import com.example.foodtracker.presentation.ui.SharedViewModel
 import com.example.foodtracker.presentation.ui.adapters.EatingAdapter
@@ -114,6 +110,15 @@ class MainFragment : Fragment() {
                 adapter4.calculateTotal()
             )
             val dailyAllTotal = calculateAllDay(data)
+            binding.progressBar2.progress = dailyAllTotal.protein.toInt()
+            binding.progressBar2.max = viewModel.getTarget().dailyProteins.toInt()
+
+            binding.progressBar3.progress = dailyAllTotal.fats.toInt()
+            binding.progressBar3.max = viewModel.getTarget().dailyFats.toInt()
+
+            binding.progressBar4.progress = dailyAllTotal.carbohydrates.toInt()
+            binding.progressBar4.max = viewModel.getTarget().dailyCarbohydrates.toInt()
+
             binding.energyValue.text = dailyAllTotal.calories.roundToInt().toString()
             binding.target.text = viewModel.getTarget().dailyCalories.roundToInt().toString()
             binding.statText.text = getString(R.string.today).plus(" ${viewModel.getUserName()}")
@@ -128,7 +133,7 @@ class MainFragment : Fragment() {
         var fats = 0.0
         var carbohydrates = 0.0
         data.map {
-            Log.d("AdapterAnswer", it.calories.toString())
+            //Log.d("AdapterAnswer", it.calories.toString())
             calories += it.calories
             fats += it.fats
             proteins += it.protein

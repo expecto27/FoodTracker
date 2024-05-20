@@ -51,7 +51,7 @@ class GetDailyTarget(private val userDataRepository: UserDataRepository) {
     ): Float {
         return (
                 (9.99 * weight.value) + (6.25 * height.value) - (4.92 * age) + if (gender) 5 else -161
-                ).toFloat()
+                ).toFloat() * 1.5f
     }
 
     private fun getDailyProtein(weight: Weight): Float {
@@ -60,11 +60,15 @@ class GetDailyTarget(private val userDataRepository: UserDataRepository) {
 
     private fun getDailyCarbohydrates(): Float {
         return 350f
-        //TODO: весьма печально
     }
 
     private fun getDailyFats(weight: Weight): Float {
         return (0.8 * weight.value).toFloat()
+    }
+
+    fun getDailyDrink() : Int{
+        val userData = userDataRepository.getUserData()
+        return userData.weight.value.toInt() * if(userData.gender) 35 else 31
     }
 
 }

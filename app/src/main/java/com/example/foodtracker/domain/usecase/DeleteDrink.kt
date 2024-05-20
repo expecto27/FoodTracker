@@ -3,8 +3,8 @@ package com.example.foodtracker.domain.usecase
 import com.example.foodtracker.domain.models.DrinkDomain
 import com.example.foodtracker.domain.repository.DrinkRepository
 
-class GetDrinkStat(private val drinkRepository: DrinkRepository) {
-    fun execute(): List<DrinkDomain>{
-        return drinkRepository.getCurrentDate()
+class DeleteDrink(private val drinkRepository: DrinkRepository) {
+    fun execute(){
+        drinkRepository.delete()
     }
 }

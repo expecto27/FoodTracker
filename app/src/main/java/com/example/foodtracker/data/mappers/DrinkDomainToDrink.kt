@@ -6,7 +6,7 @@ import com.example.foodtracker.domain.models.DrinkDomain
 object DrinkDomainToDrink: Mapper<DrinkDomain, DrinkStat> {
     override fun map(item: DrinkDomain): DrinkStat {
         return DrinkStat(
-            item.id,
+            null,
             item.ml,
             item.day
         )

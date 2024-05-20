@@ -33,6 +33,19 @@
         <item>900 мл</item>
         <item>1000 мл</item>
     </string-array>
+    <string-array name="water_types">
+        <item>Вода</item>
+        <item>Черный чай</item>
+        <item>Кофе</item>
+        <item>Миниральная вода</item>
+        <item>Зелёный чай</item>
+        <item>Травяной чай</item>
+        <item>Кола</item>
+        <item>Диетическая кола</item>
+        <item>Молоко</item>
+        <item>Сок</item>
+        <item>Другое</item>
+    </string-array>
     <string name="addition">Добавить приём пищи</string>
     <string name="top_view_discriprion">topView</string>
     <string name="fast_food">Перекус🍪</string>
