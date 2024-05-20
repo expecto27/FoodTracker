@@ -7,4 +7,6 @@ import retrofit2.Call
 interface ProductApiRepository {
     fun getSearchData(query: String?): Call<List<ProductFromAPI>>
     fun findById(id: Int) : Call<List<ProductFromAPI>>
+
+    fun check() : Boolean
 }

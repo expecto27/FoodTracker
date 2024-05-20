@@ -7,10 +7,12 @@ import com.example.foodtracker.data.database.dao.EatDayDao
 import com.example.foodtracker.data.database.dao.ProductDao
 import com.example.foodtracker.data.repository.DrinkRepositoryImpl
 import com.example.foodtracker.data.repository.EatingRepositoryImpl
+import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
 import com.example.foodtracker.data.repository.UserDataRepositoryImpl
 import com.example.foodtracker.domain.repository.DrinkRepository
 import com.example.foodtracker.domain.repository.EatingRepository
+import com.example.foodtracker.domain.repository.ProductApiRepository
 import com.example.foodtracker.domain.repository.ProductRepository
 import com.example.foodtracker.domain.repository.UserDataRepository
 import dagger.Module
@@ -64,5 +66,13 @@ class DataModule {
     @Singleton
     fun provideDrinkRepository(drinkStatDao: DrinkStatDao): DrinkRepository {
         return DrinkRepositoryImpl(drinkStatDao)
+    }
+
+
+
+    @Provides
+    @Singleton
+    fun provideProductApiRepository(): ProductApiRepository {
+        return ProductApiRepositoryImpl()
     }
 }

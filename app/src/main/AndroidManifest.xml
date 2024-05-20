@@ -17,20 +17,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.error.ErrorActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.splash.SplashActivity"
             android:exported="true"
             android:label="@string/title_activity_splash"
             android:theme="@style/Theme.FoodTracker">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".presentation.MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
-
 
 </manifest>

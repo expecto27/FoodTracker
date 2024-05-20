@@ -133,4 +133,5 @@
     <string name="water">Вода💦</string>
     <string name="fifeh">50</string>
     <string name="today_target">Цель на сегодня:</string>
+    <string name="error">Сервер недоступен, попробуйте позже</string>
 </resources>

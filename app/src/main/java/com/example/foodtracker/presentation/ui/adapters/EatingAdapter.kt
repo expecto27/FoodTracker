@@ -1,5 +1,6 @@
 package com.example.foodtracker.presentation.ui.adapters
 
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -108,10 +109,11 @@ class EatingAdapter(
         return cardList.size
     }
 
-    fun deleteEating(eating : EatingDomain){
+    fun deleteEating(eating: EatingDomain) {
         cardList.remove(eating)
         notifyDataSetChanged()
     }
+
     fun addCard(card: EatingDomain) {
         cardList.add(card)
         notifyDataSetChanged()

@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit
 object Network {
     private val BASE_URL = "http://10.0.2.2:3000"
     private val okHttpClient:OkHttpClient? = OkHttpClient.Builder()
-    .connectTimeout(30, TimeUnit.SECONDS) // время ожидания подключения
-    .readTimeout(30, TimeUnit.SECONDS) //  время ожидания чтения данных
-    .writeTimeout(30, TimeUnit.SECONDS) // время ожидания записи данных
+    .connectTimeout(5, TimeUnit.SECONDS) // время ожидания подключения
+    .readTimeout(5, TimeUnit.SECONDS) //  время ожидания чтения данных
+    .writeTimeout(5, TimeUnit.SECONDS) // время ожидания записи данных
     .build()
     private var retrofit : Retrofit = Retrofit.Builder().client(okHttpClient!!).addConverterFactory(
         GsonConverterFactory.create()
