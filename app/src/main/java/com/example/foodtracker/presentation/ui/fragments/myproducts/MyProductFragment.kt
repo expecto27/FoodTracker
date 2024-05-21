@@ -21,8 +21,8 @@ class MyProductFragment : Fragment() {
     }
 
     val viewModel: MyProductViewModel by viewModels()
-    private lateinit var binding : FragmentMyProductBinding
-    fun initRecyclerView(){
+    private lateinit var binding: FragmentMyProductBinding
+    fun initRecyclerView() {
         val _adapter = MyProductAdapter()
         binding.rvMain.apply {
             adapter = _adapter
@@ -30,6 +30,7 @@ class MyProductFragment : Fragment() {
         }
         viewModel.initAdapterList(_adapter)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +39,6 @@ class MyProductFragment : Fragment() {
         initRecyclerView()
         return binding.root
     }
-
 
 
 }

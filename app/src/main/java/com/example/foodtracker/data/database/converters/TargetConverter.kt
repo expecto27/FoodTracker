@@ -1,4 +1,4 @@
-package com.example.foodtracker.data.mappers
+package com.example.foodtracker.data.database.converters
 
 import com.example.foodtracker.domain.models.Target
 

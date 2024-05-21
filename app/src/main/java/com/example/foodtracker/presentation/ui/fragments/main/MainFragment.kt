@@ -110,20 +110,23 @@ class MainFragment : Fragment() {
                 adapter4.calculateTotal()
             )
             val dailyAllTotal = calculateAllDay(data)
-            binding.progressBar2.progress = dailyAllTotal.protein.toInt()
-            binding.progressBar2.max = viewModel.getTarget().dailyProteins.toInt()
-
-            binding.progressBar3.progress = dailyAllTotal.fats.toInt()
-            binding.progressBar3.max = viewModel.getTarget().dailyFats.toInt()
-
-            binding.progressBar4.progress = dailyAllTotal.carbohydrates.toInt()
-            binding.progressBar4.max = viewModel.getTarget().dailyCarbohydrates.toInt()
-
+            setDailyStat(dailyAllTotal)
             binding.energyValue.text = dailyAllTotal.calories.roundToInt().toString()
             binding.target.text = viewModel.getTarget().dailyCalories.roundToInt().toString()
             binding.statText.text = getString(R.string.today).plus(" ${viewModel.getUserName()}")
         }
 
+    }
+
+    private fun setDailyStat(stat: DailyStat){
+        binding.progressBar2.progress = stat.protein.toInt()
+        binding.progressBar2.max = viewModel.getTarget().dailyProteins.toInt()
+
+        binding.progressBar3.progress = stat.fats.toInt()
+        binding.progressBar3.max = viewModel.getTarget().dailyFats.toInt()
+
+        binding.progressBar4.progress = stat.carbohydrates.toInt()
+        binding.progressBar4.max = viewModel.getTarget().dailyCarbohydrates.toInt()
     }
 
 

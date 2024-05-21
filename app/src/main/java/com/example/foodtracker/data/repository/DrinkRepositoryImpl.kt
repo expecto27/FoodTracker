@@ -1,8 +1,8 @@
 package com.example.foodtracker.data.repository
 
 import com.example.foodtracker.data.database.dao.DrinkStatDao
-import com.example.foodtracker.data.mappers.DrinkDomainToDrink
-import com.example.foodtracker.data.mappers.DrinkToDrinkDomain
+import com.example.foodtracker.data.mappers.DrinkDomainToDrinkMap
+import com.example.foodtracker.data.mappers.DrinkToDrinkDomainMap
 import com.example.foodtracker.domain.models.DrinkDomain
 import com.example.foodtracker.domain.repository.DrinkRepository
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +13,7 @@ class DrinkRepositoryImpl(private val drinkStatDao: DrinkStatDao) : DrinkReposit
         val res = mutableListOf<DrinkDomain>()
         runBlocking(Dispatchers.IO) {
             drinkStatDao.getAll().map {
-                res.add(DrinkToDrinkDomain.map(it))
+                res.add(DrinkToDrinkDomainMap.map(it))
             }
         }
         return res
@@ -21,7 +21,7 @@ class DrinkRepositoryImpl(private val drinkStatDao: DrinkStatDao) : DrinkReposit
 
     override fun save(item: DrinkDomain) {
         drinkStatDao.save(
-            DrinkDomainToDrink.map(
+            DrinkDomainToDrinkMap.map(
                 item
             )
         )

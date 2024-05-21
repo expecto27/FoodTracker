@@ -1,7 +1,7 @@
 package com.example.foodtracker.data.repository
 
 import android.content.Context
-import com.example.foodtracker.data.mappers.TargetConverter
+import com.example.foodtracker.data.database.converters.TargetConverter
 import com.example.foodtracker.domain.models.Height
 import com.example.foodtracker.domain.models.UserData
 import com.example.foodtracker.domain.models.Weight

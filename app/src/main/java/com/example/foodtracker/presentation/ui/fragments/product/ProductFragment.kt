@@ -40,8 +40,10 @@ class ProductFragment(
             titleEat.text = item.name ?: ""
             proteinsValue.text = if (item.protein == null) "0" else item.protein.toString()
             fatsValue.text = if (item.fat == null) "0" else item.fat.toString()
+            caloriesValue.text = if (item.calories == null) "0" else item.calories.toString()
+
             carbohydratesValue.text =
-                if (item.carbohydrates == null) "0" else item.categories.toString()
+                if (item.carbohydrates == null) "0" else item.carbohydrates.toString()
             brands.text = item.brands ?: ""
             categories.text = item.categories ?: ""
         }

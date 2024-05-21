@@ -53,11 +53,11 @@ class ProductAdapter(private val context: Context?, private val imageLoader: Ima
 
     fun addCard(card: Product) {
         cardList.add(card)
-        notifyItemInserted(cardList.size - 1)
+        notifyDataSetChanged()
     }
 
     fun clear() {
         cardList.clear()
-        notifyItemRemoved(cardList.size)
+        notifyDataSetChanged()
     }
 }

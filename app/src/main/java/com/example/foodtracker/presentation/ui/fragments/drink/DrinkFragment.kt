@@ -61,14 +61,12 @@ class DrinkFragment : Fragment() {
 
         binding.buttonSave.setOnClickListener {
             viewModel.getDrinkStat()
-            binding.buttonSave.text = viewModel.drinkStat.value.toString()
             viewModel.saveDrink(onSelect, CalendarAdapter().getDate(Calendar.getInstance()))
             Log.d(this.javaClass.name, CalendarAdapter().getDate(Calendar.getInstance()).toString())
         }
         binding.delete.setOnClickListener {
             viewModel.deleteDrink()
             viewModel.getDrinkStat()
-            binding.buttonSave.text = viewModel.drinkStat.value.toString()
             viewModel.saveDrink(onSelect, CalendarAdapter().getDate(Calendar.getInstance()))
             Log.d(this.javaClass.name, CalendarAdapter().getDate(Calendar.getInstance()).toString())
         }
