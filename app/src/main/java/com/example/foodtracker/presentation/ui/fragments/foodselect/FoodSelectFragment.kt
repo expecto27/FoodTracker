@@ -15,7 +15,6 @@ import com.example.foodtracker.presentation.ImageLoader
 import com.example.foodtracker.presentation.ui.adapters.ProductAdapter
 import com.example.foodtracker.presentation.ui.fragments.addproduct.AddProductFragment
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.qualifiers.ApplicationContext
 
 @AndroidEntryPoint
 class FoodSelectFragment : Fragment() {
@@ -40,9 +39,12 @@ class FoodSelectFragment : Fragment() {
                 .newEditable(newData)
         }
 
-        val productAdapter = ProductAdapter(activity as AppCompatActivity, imageLoader = ImageLoader(requireContext()))
+        val productAdapter = ProductAdapter(
+            activity as AppCompatActivity,
+            imageLoader = ImageLoader(requireContext())
+        )
 
-        viewModel.products.observe(viewLifecycleOwner){ newData ->
+        viewModel.products.observe(viewLifecycleOwner) { newData ->
             newData.map {
                 productAdapter.addCard(it)
             }
@@ -59,10 +61,10 @@ class FoodSelectFragment : Fragment() {
         binding.addFood.setOnClickListener {
             (activity as FragmentChanger).changeMainFragment(AddProductFragment.newInstance())
         }
-        binding.cancelSearch.setOnClickListener{
+        binding.cancelSearch.setOnClickListener {
             productAdapter.clear()
             viewModel.setLivaDataText(binding.foodSearch.text.toString())
-            viewModel.loadMyFood()
+            viewModel.search()
         }
         return binding.root
     }

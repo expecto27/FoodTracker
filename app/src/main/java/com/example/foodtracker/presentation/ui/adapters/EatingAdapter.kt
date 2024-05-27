@@ -41,13 +41,9 @@ class EatingAdapter(
         fun bind(card: EatingDomain) {
             val weight: BigDecimal = card.weight.toBigDecimal()
             val cf: BigDecimal = weight.divide((100).toBigDecimal());
-            var productFromAPICall: Response<List<ProductFromAPI>>
+            var productFromAPI: List<ProductFromAPI>?
             runBlocking(Dispatchers.IO) {
-                productFromAPICall = productApiRepository.findById(card.serverId ?: 0).execute()
-            }
-            var productFromAPI: List<ProductFromAPI>? = null
-            if (productFromAPICall.isSuccessful) {
-                productFromAPI = productFromAPICall.body()
+                productFromAPI = productApiRepository.findById(card.serverId ?: 0)
             }
             val product = productFromAPI?.get(0)
             with(binding) {
@@ -129,14 +125,11 @@ class EatingAdapter(
             val weight = card.weight.toBigDecimal()
             val cf = weight.divide((100).toBigDecimal())
 
-            var productFromAPICall: Response<List<ProductFromAPI>>
+            var productFromAPI: List<ProductFromAPI>?
             runBlocking(Dispatchers.IO) {
-                productFromAPICall = productApiRepository.findById(card.serverId ?: 0).execute()
+                productFromAPI = productApiRepository.findById(card.serverId ?: 0)
             }
-            var productFromAPI: List<ProductFromAPI>? = null
-            if (productFromAPICall.isSuccessful) {
-                productFromAPI = productFromAPICall.body()
-            }
+
             val product = productFromAPI?.get(0)
 
             if (product?.energyKcal100g != null) {

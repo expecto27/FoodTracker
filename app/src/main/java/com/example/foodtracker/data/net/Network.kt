@@ -10,8 +10,8 @@ object Network {
     private val BASE_URL = "http://10.0.2.2:3000"
     private val okHttpClient:OkHttpClient? = OkHttpClient.Builder()
     .connectTimeout(5, TimeUnit.SECONDS) // время ожидания подключения
-    .readTimeout(5, TimeUnit.SECONDS) //  время ожидания чтения данных
-    .writeTimeout(5, TimeUnit.SECONDS) // время ожидания записи данных
+    .readTimeout(15, TimeUnit.SECONDS) //  время ожидания чтения данных
+    .writeTimeout(10, TimeUnit.SECONDS) // время ожидания записи данных
     .build()
     private var retrofit : Retrofit = Retrofit.Builder().client(okHttpClient!!).addConverterFactory(
         GsonConverterFactory.create()

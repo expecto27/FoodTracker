@@ -5,6 +5,7 @@ import com.example.foodtracker.data.repository.ProductApiRepositoryImpl
 import com.example.foodtracker.data.repository.ProductRepositoryImpl
 import com.example.foodtracker.domain.repository.DrinkRepository
 import com.example.foodtracker.domain.repository.EatingRepository
+import com.example.foodtracker.domain.repository.ProductRepository
 import com.example.foodtracker.domain.repository.UserDataRepository
 import com.example.foodtracker.domain.usecase.CalculateIMT
 import com.example.foodtracker.domain.usecase.DeleteDrink
@@ -18,6 +19,7 @@ import com.example.foodtracker.domain.usecase.SaveDrink
 import com.example.foodtracker.domain.usecase.SaveEating
 import com.example.foodtracker.domain.usecase.SaveMyProduct
 import com.example.foodtracker.domain.usecase.SaveUserData
+import com.example.foodtracker.domain.usecase.SearchMyProducts
 import com.example.foodtracker.domain.usecase.SearchProducts
 import dagger.Module
 import dagger.Provides
@@ -100,9 +102,16 @@ class DomainModule {
     fun provideSaveDrink(drinkRepository: DrinkRepository): SaveDrink {
         return SaveDrink(drinkRepository)
     }
+
     @Provides
     @ViewModelScoped
     fun provideDeleteDrink(drinkRepository: DrinkRepository): DeleteDrink {
         return DeleteDrink(drinkRepository)
+    }
+
+    @Provides
+    @ViewModelScoped
+    fun provideSearchMyProductRepository(productRepository: ProductRepository): SearchMyProducts {
+        return SearchMyProducts(productRepository)
     }
 }
