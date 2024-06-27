@@ -12,6 +12,7 @@ import com.example.foodtracker.domain.usecase.GetDrinkStat
 import com.example.foodtracker.domain.usecase.SaveDrink
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.Date
@@ -44,20 +45,22 @@ class DrinkViewModel @Inject constructor(
     }
 
     fun getDrinkStat() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val stat =
-                getDrinkStat.execute()
-            var res = 0
-            Log.d(this.javaClass.name, stat.size.toString())
-            stat.forEach { item ->
-                res += item.ml
+        viewModelScope.launch {
+            val result = withContext(Dispatchers.IO) {
+                calculateDrinkStat()
             }
-            withContext(Dispatchers.Main) {
-                _drinkStat.value = res
-            }
+            _drinkStat.postValue(result)
         }
     }
 
+    private suspend fun calculateDrinkStat(): Int {
+        val stat = getDrinkStat.execute()
+        var res = 0
+        stat.forEach { item ->
+            res += item.ml
+        }
+        return res
+    }
     fun saveDrink(ml: Int, day: Date) {
         viewModelScope.launch(Dispatchers.IO) {
             saveDrink.execute(DrinkDomain(null, ml, day))

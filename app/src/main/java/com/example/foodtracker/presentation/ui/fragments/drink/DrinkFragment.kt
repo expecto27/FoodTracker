@@ -55,20 +55,22 @@ class DrinkFragment : Fragment() {
                     onSelect = 0
                 }
             }
-        viewModel.drinkStat.observe(viewLifecycleOwner) { newData ->
-            binding.progress.progress = newData
-        }
+
 
         binding.buttonSave.setOnClickListener {
-            viewModel.getDrinkStat()
             viewModel.saveDrink(onSelect, CalendarAdapter().getDate(Calendar.getInstance()))
+            viewModel.getDrinkStat()
             Log.d(this.javaClass.name, CalendarAdapter().getDate(Calendar.getInstance()).toString())
         }
         binding.delete.setOnClickListener {
             viewModel.deleteDrink()
             viewModel.getDrinkStat()
-            viewModel.saveDrink(onSelect, CalendarAdapter().getDate(Calendar.getInstance()))
             Log.d(this.javaClass.name, CalendarAdapter().getDate(Calendar.getInstance()).toString())
+        }
+
+        viewModel.drinkStat.observe(viewLifecycleOwner) { newData ->
+            binding.progress.progress = newData
+            viewModel.getDrinkStat()
         }
     }
 }

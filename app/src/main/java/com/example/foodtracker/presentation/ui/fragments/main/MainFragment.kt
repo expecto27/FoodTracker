@@ -1,6 +1,7 @@
 package com.example.foodtracker.presentation.ui.fragments.main
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -109,6 +110,8 @@ class MainFragment : Fragment() {
                 adapter3.calculateTotal(),
                 adapter4.calculateTotal()
             )
+            Log.i("a1Total", adapter1.calculateTotal().toString())
+
             val dailyAllTotal = calculateAllDay(data)
             setDailyStat(dailyAllTotal)
             binding.energyValue.text = dailyAllTotal.calories.roundToInt().toString()
@@ -136,7 +139,7 @@ class MainFragment : Fragment() {
         var fats = 0.0
         var carbohydrates = 0.0
         data.map {
-            //Log.d("AdapterAnswer", it.calories.toString())
+            Log.d("AdapterAnswer", it.calories.toString())
             calories += it.calories
             fats += it.fats
             proteins += it.protein
